@@ -1,0 +1,136 @@
+/*
+ * popup.css
+ * ─────────────────────────────────────────────
+ * Berisi: Overlay popup (background gelap)
+ *         Popup gambar (image viewer)
+ *         Popup PDF (Google Docs Viewer via iframe)
+ *         Tombol tutup (X)
+ *         Animasi buka/tutup
+ * ─────────────────────────────────────────────
+ * Kalau mau ganti ukuran popup PDF →
+ *   ubah width/height di .popup-pdf-wrap
+ */
+
+/* ── Overlay latar ── */
+.popup-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(5, 12, 24, 0.90);
+  backdrop-filter: blur(8px);
+  /* Flex center — popup selalu di tengah */
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+}
+
+.popup-overlay.open {
+  display: flex;
+  animation: fadeIn .2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ── Wrapper konten popup ── */
+.popup-inner {
+  position: relative;
+  animation: popIn .25s ease;
+  max-width: 92vw;
+  max-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes popIn {
+  from { opacity: 0; transform: scale(.90); }
+  to   { opacity: 1; transform: scale(1);   }
+}
+
+/* ── Tombol tutup ── */
+.popup-close {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 10000;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  border: 1.5px solid rgba(255, 255, 255, 0.30);
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  transition: background .2s, transform .2s;
+}
+
+.popup-close:hover {
+  background: rgba(255, 255, 255, 0.28);
+  transform: scale(1.08);
+}
+
+/* ── Popup Gambar ── */
+.popup-img img {
+  display: block;
+  max-width: min(900px, 88vw);
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 16px 60px rgba(0, 0, 0, 0.5);
+}
+
+/* ── Popup PDF (desktop) ── */
+.popup-pdf-wrap {
+  width: min(880px, 90vw);
+  height: min(640px, 86vh);
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.5);
+}
+
+/* Header biru di atas PDF */
+.popup-pdf-header {
+  padding: 14px 20px;
+  background: var(--primary-dark);
+  color: #fff;
+  font-size: 13.5px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+/* Area konten PDF */
+.popup-pdf-body {
+  flex: 1;
+  overflow: hidden;
+  background: #525659;
+}
+
+.popup-pdf-body iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+/* ── Responsive Mobile ≤ 560px ── */
+@media (max-width: 560px) {
+  .popup-close    { top: 10px; right: 10px; width: 36px; height: 36px; font-size: 18px; }
+  .popup-img img  { max-width: 94vw; max-height: 80vh; border-radius: 10px; }
+  .popup-pdf-wrap { width: 96vw; height: 78vh; border-radius: 12px; }
+  .popup-pdf-header { padding: 10px 14px; font-size: 12px; }
+}

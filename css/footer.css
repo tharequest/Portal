@@ -1,0 +1,92 @@
+/*
+ * footer.css
+ * ─────────────────────────────────────────────
+ * Berisi: Footer 4 kolom (brand + 3 kolom link)
+ *         Bar bawah copyright
+ * ─────────────────────────────────────────────
+ * Kalau mau ganti warna footer → ubah background
+ *   di selector footer (saat ini pakai --primary-dark)
+ */
+
+footer {
+  margin-top: 48px;
+  background: var(--primary-dark);
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.footer-top {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 24px 32px;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 36px;
+}
+
+/* Kolom brand (kiri) */
+.footer-brand .brand-text .name  { color: #fff; }
+.footer-brand .brand-text .label { color: var(--accent-light); }
+
+.footer-desc {
+  font-size: 13px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 14px;
+}
+
+/* Kolom link */
+.footer-col h5 {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent-light);
+  margin-bottom: 14px;
+}
+
+.footer-col ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer-col ul a {
+  text-decoration: none;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.6);
+  transition: color .2s;
+}
+
+.footer-col ul a:hover { color: #fff; }
+
+/* Bar copyright bawah */
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 16px 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.footer-bottom a {
+  color: rgba(255, 255, 255, 0.35);
+  text-decoration: none;
+}
+
+.footer-bottom a:hover { color: rgba(255, 255, 255, 0.7); }
+
+/* ── Responsive Tablet ≤ 900px ── */
+@media (max-width: 900px) {
+  .footer-top { grid-template-columns: 1fr 1fr; gap: 24px; }
+}
+
+/* ── Responsive Mobile ≤ 560px ── */
+@media (max-width: 560px) {
+  .footer-top    { grid-template-columns: 1fr; gap: 20px; padding: 28px 14px; }
+  .footer-bottom { flex-direction: column; gap: 6px; text-align: center; padding: 14px; }
+}

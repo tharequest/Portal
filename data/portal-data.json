@@ -1,0 +1,170 @@
+{
+  "slides": [
+    {
+      "id": "s1-0",
+      "slider": 1,
+      "tag": "Pengumuman",
+      "title": "Jam Layanan Akademik",
+      "desc": "Jam Layanan Operasional Akademik dan Kemahasiswaan Senin s.d Kamis, Jumat (WFH)",
+      "imageUrl": "https://raw.githubusercontent.com/tharequest/Portal/main/assets/images/1776060763449-0slide1.jpg",
+      "popupType": "image",
+      "popupUrl": "https://raw.githubusercontent.com/tharequest/Portal/main/assets/images/1776060763449-0slide1.jpg",
+      "popupLabel": "Jam Layanan Akademik"
+    },
+    {
+      "id": "s1-1",
+      "slider": 1,
+      "tag": "Akademik",
+      "title": "Kalender Akademik",
+      "desc": "Kalender Akademik Semester Genap T.A 2025 / 2026",
+      "imageUrl": "https://raw.githubusercontent.com/tharequest/Portal/main/assets/images/1776060820895-inslide01.png",
+      "popupType": "pdf",
+      "popupUrl": "https://raw.githubusercontent.com/tharequest/Portal/main/assets/pdf/1776139125490-kalenderakademik.pdf",
+      "popupLabel": "Kalender Akademik"
+    },
+    {
+      "id": "s1-2",
+      "slider": 1,
+      "tag": "Informasi",
+      "title": "Info Syarat Pendaftaran Wisuda",
+      "desc": "Berkas Kelengkapan Pendaftaran Wisuda Periode III T.A 2025/2026",
+      "imageUrl": "https://raw.githubusercontent.com/tharequest/Portal/main/assets/images/1776062272760-slide5.png",
+      "popupType": "pdf",
+      "popupUrl": "https://raw.githubusercontent.com/tharequest/Portal/main/assets/pdf/1776139139139-syaratwisuda2526peri3.pdf",
+      "popupLabel": "Info Syarat Pendaftaran Wisuda"
+    },
+    {
+      "id": "s2-0",
+      "slider": 2,
+      "tag": "Akademik",
+      "title": "Keterangan Aktif Kuliah",
+      "desc": "Scan Barcode ini Untuk Akses Form Surat Keterangan Aktif Kuliah dengan",
+      "imageUrl": "https://raw.githubusercontent.com/tharequest/Portal/main/assets/images/1776062958824-inslide1.png",
+      "popupType": "image",
+      "popupUrl": "https://raw.githubusercontent.com/tharequest/Portal/main/assets/images/1776062958824-inslide1.png",
+      "popupLabel": "Keterangan Aktif Kuliah"
+    },
+    {
+      "id": "s2-1",
+      "slider": 2,
+      "tag": "Akademik",
+      "title": "Surat Keterangan Lulus",
+      "desc": "Scan Barcode Untuk Akses Form Surat Keterangan Lulus",
+      "imageUrl": "https://raw.githubusercontent.com/tharequest/Portal/main/assets/images/1776063077168-inslide3.png",
+      "popupType": "image",
+      "popupUrl": "https://raw.githubusercontent.com/tharequest/Portal/main/assets/images/1776063077168-inslide3.png",
+      "popupLabel": "Surat Keterangan Lulus"
+    },
+    {
+      "id": "s2-2",
+      "slider": 2,
+      "tag": "Akademik",
+      "title": "Permohonan Cuti Kuliah",
+      "desc": "Scan Barcode Untuk Akses Form Surat Permohonan Cuti Kuliah",
+      "imageUrl": "https://raw.githubusercontent.com/tharequest/Portal/main/assets/images/1776064298360-inslide2.png",
+      "popupType": "image",
+      "popupUrl": "https://raw.githubusercontent.com/tharequest/Portal/main/assets/images/1776064298360-inslide2.png",
+      "popupLabel": "Permohonan Cuti Kuliah"
+    },
+    {
+      "id": "sl-1776062471065-5fyk",
+      "slider": 1,
+      "tag": "Akademik",
+      "title": "Informasi Daftar Ulang",
+      "desc": "Informasi Daftar Ulang Semester Genap TA 2025/2026",
+      "imageUrl": "https://raw.githubusercontent.com/tharequest/Portal/main/assets/images/1776062445396-slide6.png",
+      "popupType": "pdf",
+      "popupUrl": "https://raw.githubusercontent.com/tharequest/Portal/main/assets/pdf/1776139159844-daftarulang2526.pdf",
+      "popupLabel": "Informasi Daftar Ulang"
+    },
+    {
+      "id": "sl-1776065217881-dbpe",
+      "slider": 2,
+      "tag": "Akademik",
+      "title": "Surat Pengunduran Diri",
+      "desc": "Scan Barcode Untuk Akses Form Pengunduran Diri",
+      "imageUrl": "https://raw.githubusercontent.com/tharequest/Portal/main/assets/images/1776064660043-inslide4.png",
+      "popupType": "image",
+      "popupUrl": "https://raw.githubusercontent.com/tharequest/Portal/main/assets/images/1776064660043-inslide4.png",
+      "popupLabel": "Surat Pengunduran Diri"
+    },
+    {
+      "id": "sl-1776065608739-y2d9",
+      "slider": 2,
+      "tag": "Akademik",
+      "title": "Permohonan Pindah Kuliah",
+      "desc": "Scan barcode untuk akses ke form surat permohonan pindah kuliah",
+      "imageUrl": "https://raw.githubusercontent.com/tharequest/Portal/main/assets/images/1776065600006-inslide5.jpg",
+      "popupType": "image",
+      "popupUrl": "https://raw.githubusercontent.com/tharequest/Portal/main/assets/images/1776065600006-inslide5.jpg",
+      "popupLabel": "Permohonan Pindah Kuliah"
+    },
+    {
+      "id": "sl-1776065799207-62ek",
+      "slider": 2,
+      "tag": "Pengumuman",
+      "title": "Berkas Daftar Ulang",
+      "desc": "Berkas daftar ulang mahasiswa baru",
+      "imageUrl": "https://raw.githubusercontent.com/tharequest/Portal/main/assets/images/1776065794666-slide3.jpg",
+      "popupType": "image",
+      "popupUrl": "https://raw.githubusercontent.com/tharequest/Portal/main/assets/images/1776065794666-slide3.jpg",
+      "popupLabel": "Berkas Daftar Ulang"
+    },
+    {
+      "id": "sl-1776065824272-dqrd",
+      "slider": 2,
+      "tag": "Pengumuman",
+      "title": "Berkas Daftar Ulang",
+      "desc": "Berkas daftar ulang mahasiswa lama",
+      "imageUrl": "https://raw.githubusercontent.com/tharequest/Portal/main/assets/images/1776065819847-slide1.jpg",
+      "popupType": "image",
+      "popupUrl": "https://raw.githubusercontent.com/tharequest/Portal/main/assets/images/1776065819847-slide1.jpg",
+      "popupLabel": "Berkas Daftar Ulang"
+    },
+    {
+      "id": "sl-1776065943712-hsxp",
+      "slider": 2,
+      "tag": "Pengumuman",
+      "title": "Bagi Yang Akan/Sudah Sidang",
+      "desc": "Bagi mahasiswa yang akan/sudah sidang harap segera mengisi ini",
+      "imageUrl": "https://raw.githubusercontent.com/tharequest/Portal/main/assets/images/1776065932155-slide2.jpg",
+      "popupType": "image",
+      "popupUrl": "https://raw.githubusercontent.com/tharequest/Portal/main/assets/images/1776065932155-slide2.jpg",
+      "popupLabel": "Bagi Yang Akan/Sudah Sidang"
+    },
+    {
+      "id": "sl-1776152001817-0s4o",
+      "slider": 1,
+      "tag": "Pengumuman",
+      "title": "slide2222",
+      "desc": "222",
+      "imageUrl": "https://raw.githubusercontent.com/tharequest/Portal/main/assets/images/1776151997335-HFIcuQLakAAIrSX.jfif",
+      "popupType": "image",
+      "popupUrl": "https://raw.githubusercontent.com/tharequest/Portal/main/assets/images/1776151997335-HFIcuQLakAAIrSX.jfif",
+      "popupLabel": "slide2222"
+    }
+  ],
+  "news": [
+    {
+      "id": "n1",
+      "date": "10 Apr",
+      "text": "Jadwal UAS Semester Genap 2024/2025 telah ditetapkan. Mahasiswa wajib memeriksa jadwal masing-masing."
+    },
+    {
+      "id": "n2",
+      "date": "08 Apr",
+      "text": "Pendaftaran beasiswa prestasi akademik tahap II dibuka hingga 30 April 2025."
+    },
+    {
+      "id": "n3",
+      "date": "05 Apr",
+      "text": "Sistem Bio Ijazah diperbarui. Alumni dapat akses fitur verifikasi digital terbaru."
+    },
+    {
+      "id": "n4",
+      "date": "02 Apr",
+      "text": "Pemeliharaan Satu UNTAN dijadwalkan 12 April 2025 pukul 00.00–06.00 WIB."
+    }
+  ],
+  "updatedAt": "2026-04-14T07:33:22.127Z"
+}

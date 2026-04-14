@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+  <title>Portal Informasi – FMIPA Untan</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,600&display=swap" rel="stylesheet"/>
+
+  <!-- CSS MODULAR — JANGAN load style.css lama! -->
+  <link rel="stylesheet" href="css/base.css"/>
+  <link rel="stylesheet" href="css/animations.css"/>
+  <link rel="stylesheet" href="css/header.css"/>
+  <link rel="stylesheet" href="css/slider.css"/>
+  <link rel="stylesheet" href="css/popup.css"/>
+  <link rel="stylesheet" href="css/content.css"/>
+  <link rel="stylesheet" href="css/footer.css"/>
+  <link rel="stylesheet" href="css/chatbot.css"/>
+</head>
+<body>
+
+<!-- ═══ HEADER ════════════════════════════════════ -->
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="brand">
+    <img src="asset/avp1.png" alt="Logo Untan" class="logo-triple">
+      <div class="brand-text">
+        <span class="label">FMIPA Untan</span>
+        <span class="name">Portal Akademik & Kemahasiswaan</span>
+    </div>
+    </a>
+
+    <div class="header-spacer"></div>
+    <nav class="main-nav">
+      <a href="index.html" class="active">Beranda</a>
+      <a href="#">Jenis Layanan</a>
+      <a href="#">Bio Ijazah</a>
+      <a href="#">Satu UNTAN</a>
+      <a href="#">Cek Surat</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Toggle Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="index.html">🏠 Beranda</a>
+    <a href="#">📋 Jenis Layanan</a>
+    <a href="#">🎓 Bio Ijazah</a>
+    <a href="#">🏛️ Satu UNTAN</a>
+    <a href="#">✉️ Cek Surat</a>
+  </div>
+</header>
+
+<!-- ═══ DUAL SLIDER ════════════════════════════════ -->
+<section class="hero">
+  <div class="slider-card">
+    <div class="slider-viewport">
+      <div class="slider-track" id="track1"></div>
+    </div>
+    <button class="slider-btn prev" data-slider="1" data-dir="-1">&#8592;</button>
+    <button class="slider-btn next" data-slider="1" data-dir="1">&#8594;</button>
+    <div class="slider-dots" id="dots1"></div>
+  </div>
+  <div class="slider-card">
+    <div class="slider-viewport">
+      <div class="slider-track" id="track2"></div>
+    </div>
+    <button class="slider-btn prev" data-slider="2" data-dir="-1">&#8592;</button>
+    <button class="slider-btn next" data-slider="2" data-dir="1">&#8594;</button>
+    <div class="slider-dots" id="dots2"></div>
+  </div>
+</section>
+
+<!-- ═══ AKSES CEPAT ═════════════════════════════════ -->
+<section class="quick-section">
+  <div class="section-header">
+    <h3>Akses Cepat Layanan</h3>
+    <div class="line"></div>
+  </div>
+  <div class="quick-grid">
+    <a href="#" class="quick-card">
+      <div class="quick-icon" style="background:#e8f0fd;">📋</div>
+      <h4>Jenis Layanan</h4>
+      <p>Lihat semua jenis layanan akademik dan administrasi</p>
+    </a>
+    <a href="#" class="quick-card">
+      <div class="quick-icon" style="background:#fef3e2;">🎓</div>
+      <h4>Bio Ijazah</h4>
+      <p>Verifikasi dan cetak biodata ijazah resmi</p>
+    </a>
+    <a href="#" class="quick-card">
+      <div class="quick-icon" style="background:#e6f7f0;">🏛️</div>
+      <h4>Satu UNTAN</h4>
+      <p>Portal terpadu sistem informasi universitas</p>
+    </a>
+    <a href="#" class="quick-card">
+      <div class="quick-icon" style="background:#fce8f3;">✉️</div>
+      <h4>Cek Surat</h4>
+      <p>Lacak status surat dan dokumen resmi</p>
+    </a>
+  </div>
+</section>
+
+<!-- ═══ INFO STRIP ═══════════════════════════════════ -->
+<section class="info-strip">
+  <div class="info-card">
+    <div class="card-title"><span>📰</span> Berita &amp; Pengumuman Terbaru</div>
+    <ul class="news-list" id="newsList"></ul>
+  </div>
+  <div class="info-card">
+    <div class="card-title"><span>📊</span> Statistik Portal</div>
+    <div class="stat-grid">
+      <div class="stat-item">
+        <div class="stat-icon" style="background:#e8f0fd;">👤</div>
+        <div><div class="stat-num">32.540</div><div class="stat-label">Pengguna Aktif</div></div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-icon" style="background:#fef3e2;">📄</div>
+        <div><div class="stat-num">8.712</div><div class="stat-label">Surat Diproses</div></div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-icon" style="background:#e6f7f0;">🎓</div>
+        <div><div class="stat-num">14.290</div><div class="stat-label">Ijazah Terverifikasi</div></div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-icon" style="background:#fce8f3;">✅</div>
+        <div><div class="stat-num">99.2%</div><div class="stat-label">Uptime Layanan</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ══════════════════════════════════════ -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+
+      <a href="index.html" class="brand">
+  <img src="asset/avp1.png" alt="Logo Untan" class="logo-triple">
+  <div class="brand-text">
+    <span class="label">Universitas Tanjungpura</span>
+    <span class="name">Portal Informasi</span>
+  </div>
+</a>
+
+      <p class="footer-desc">Portal informasi resmi FMIPA Universitas Tanjungpura — layanan akademik dan administrasi secara digital.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Layanan</h5>
+      <ul>
+        <li><a href="#">Jenis Layanan</a></li>
+        <li><a href="#">Bio Ijazah</a></li>
+        <li><a href="#">Satu UNTAN</a></li>
+        <li><a href="#">Cek Surat</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Informasi</h5>
+      <ul>
+        <li><a href="#">Pengumuman</a></li>
+        <li><a href="#">Berita Kampus</a></li>
+        <li><a href="#">Jadwal Akademik</a></li>
+        <li><a href="#">Kalender Kegiatan</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Bantuan</h5>
+      <ul>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Kontak</a></li>
+        <li><a href="#">Kebijakan Privasi</a></li>
+        <li><a href="admin/login.html">🔐 Admin</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Universitas Tanjungpura. Hak cipta dilindungi.</span>
+    <span>Portal Informasi v3.0</span>
+  </div>
+</footer>
+
+<!-- ═══ POPUP ════════════════════════════════════════ -->
+<div class="popup-overlay" id="popupOverlay">
+  <div class="popup-inner" id="popupInner"></div>
+  <button class="popup-close" id="popupClose">✕</button>
+</div>
+
+<!-- ═══ CHATBOT ══════════════════════════════════════ -->
+<button class="chat-fab" id="chatFab" title="Tanya Portal Bot">
+  🏛️<span class="chat-badge"></span>
+</button>
+<div class="chat-window" id="chatWindow">
+  <div class="chat-header">
+    <div class="chat-avatar">🏛️</div>
+    <div class="chat-header-info">
+      <div class="chat-name">Portal Bot</div>
+      <div class="chat-status"><span class="status-dot"></span> Online</div>
+    </div>
+    <button class="chat-close-btn" id="chatCloseBtn">✕</button>
+  </div>
+  <div class="chat-messages" id="chatMessages"></div>
+  <div class="chat-input-area">
+    <textarea class="chat-input" id="chatInput" placeholder="Ketik pertanyaan Anda..." rows="1"></textarea>
+    <button class="chat-send" id="chatSend">➤</button>
+  </div>
+</div>
+
+<!-- JS — urutan load penting! -->
+<script src="js/store.js"></script>
+<script src="js/header.js"></script>
+<script src="js/slider.js"></script>
+<script src="js/popup.js"></script>
+<script src="js/news.js"></script>
+<script src="js/chatbot.js"></script>
+<script src="js/app.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+/*
+ * base.css
+ * ─────────────────────────────────────────────
+ * Berisi: CSS Variables (warna, ukuran, shadow)
+ *         dan reset/base styles untuk body & html
+ * ─────────────────────────────────────────────
+ * Kalau mau ganti warna tema utama → edit di sini
+ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* Warna utama */
+  --primary:       #1a4f8a;
+  --primary-dark:  #0e3260;
+  --primary-light: #2d6ab5;
+  --accent:        #e8a020;
+  --accent-light:  #f5c76a;
+
+  /* Background & permukaan */
+  --bg:      #f4f7fb;
+  --surface: #ffffff;
+
+  /* Teks */
+  --text:      #1c2b3a;
+  --text-muted: #5a6e82;
+
+  /* Border & shadow */
+  --border: #dce5f0;
+  --shadow: 0 4px 24px rgba(26, 79, 138, 0.10);
+
+  /* Border radius */
+  --radius: 14px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}

@@ -1,0 +1,198 @@
+/*
+ * header.css
+ * ─────────────────────────────────────────────
+ * Berisi: Styling header sticky di atas
+ *         Logo + nama portal
+ *         Menu navigasi desktop
+ *         Tombol hamburger (mobile)
+ *         Mobile nav drawer
+ * ─────────────────────────────────────────────
+ * Kalau mau ganti tinggi header → ubah height di .header-inner
+ * Kalau mau ganti warna nav aktif  → ubah di nav.main-nav a.active
+ */
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: var(--surface);
+  border-bottom: 2px solid var(--border);
+  box-shadow: 0 2px 16px rgba(26, 79, 138, 0.08);
+}
+
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 68px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* ── Logo & brand ── */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.logo-box {
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 10px rgba(26, 79, 138, 0.25);
+  flex-shrink: 0;
+}
+
+.logo-box svg { width: 26px; height: 26px; }
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+.brand-text .label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.brand-text .name {
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--primary-dark);
+  letter-spacing: -0.01em;
+}
+
+.header-spacer { flex: 1; }
+
+/* ── Nav desktop ── */
+nav.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+nav.main-nav a {
+  position: relative;
+  text-decoration: none;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--text-muted);
+  padding: 8px 14px;
+  border-radius: 8px;
+  transition: color .2s, background .2s;
+  white-space: nowrap;
+}
+
+/* Garis bawah animasi saat hover / aktif */
+nav.main-nav a::after {
+  content: '';
+  position: absolute;
+  left: 14px; right: 14px; bottom: 4px;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 2px;
+  transform: scaleX(0);
+  transition: transform .25s ease;
+}
+
+nav.main-nav a:hover { color: var(--primary); background: rgba(26,79,138,0.06); }
+nav.main-nav a:hover::after,
+nav.main-nav a.active::after { transform: scaleX(1); }
+nav.main-nav a.active { color: var(--primary); background: rgba(26,79,138,0.07); }
+
+/* ── Hamburger (tampil di mobile) ── */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+}
+
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 2.5px;
+  background: var(--primary);
+  border-radius: 2px;
+  transition: transform .3s, opacity .3s;
+}
+
+/* Animasi hamburger → X */
+.hamburger.open span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
+
+/* ── Mobile nav drawer ── */
+.mobile-nav {
+  display: none;
+  flex-direction: column;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  padding: 12px 16px 20px;
+  gap: 4px;
+  box-shadow: 0 8px 20px rgba(26,79,138,0.08);
+}
+
+.mobile-nav.open { display: flex; }
+
+.mobile-nav a {
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-muted);
+  padding: 11px 14px;
+  border-radius: 8px;
+  transition: color .2s, background .2s;
+}
+
+.mobile-nav a:hover { color: var(--primary); background: rgba(26,79,138,0.06); }
+
+/* ── Logo gambar triple ── */
+.logo-triple {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  nav.main-nav { display: none; }
+  .hamburger   { display: flex; }
+}
+
+@media (max-width: 560px) {
+  .header-inner     { padding: 0 14px; height: 60px; }
+  .brand-text .name { font-size: 15px; }
+  .brand-text .label{ display: none; }
+  .logo-box         { width: 38px; height: 38px; }
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .logo-triple { height: 40px; }
+}
+
+/* Mobile */
+@media (max-width: 560px) {
+  .logo-triple        { height: 34px; }
+  .brand-text .name   { font-size: 13px; }
+  .brand-text .label  { display: none; }
+}
