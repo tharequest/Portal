@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Status Surat Akademik</title>
+
+  <!-- STYLE UTAMA -->
+  <link href="https://fonts.googleapis.com/css2?family=Doto:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/csstitlecode/statsurat.css" />
+
+</head>
+
+<body>
+<canvas id="pixelCanvas" style="position:fixed; inset:0; z-index:5; pointer-events:none;"></canvas>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-left">
+      <img src="assets/images/logo-untan.png" alt="Logo FMIPA Untan">
+
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <!-- <li><a href="#">Panduan</a></li> -->
+
+        </ul>
+      </nav>
+    </div>
+
+    <!-- JAM REALTIME -->
+    <div class="clock-header">
+      <span id="tanggal"></span> | <span id="jam"></span>
+    </div>
+
+    <div class="menu-toggle" id="menu-toggle">
+      <span></span><span></span><span></span>
+    </div>
+  </header>
+
+  <!-- SEARCH FORM -->
+  <div class="bg-grid"></div>
+<div class="card-container">
+  <div class="cyber-card" id="tilt-card">
+    <div class="judul-container"> 
+        <div id="linesurat" class="judul-surat">Cek Status</div><br>
+        <div id="linesurat2" class="judul-surat">Surat Mahasiswa</div>
+    </div>
+  </div>
+</div>
+  <!-- SEARCH field -->
+    <div class="search-container">
+      <input type="text" id="searchInput" class="search-input" placeholder="Masukkan Nama atau NIM anda...">
+       
+    <select id="jenisSurat" class="search-select">
+     <option value="" selected disabled>Pilih Jenis Surat</option>
+     <option value="aktif_kuliah">Surat Aktif Kuliah</option>
+     <option value="ket_lulus">Surat Keterangan Lulus</option>
+     <option value="cuti_kuliah">Surat Cuti Kuliah</option>
+     <option value="undur_diri">Surat Pengunduran Diri</option>
+     <option value="pindah_kuliah">Surat Pindah Kuliah</option>
+    </select>
+
+
+      <button class="search-btn" onclick="cariSurat()">Cari</button>
+    </div>
+  </div>
+  <div id="hasil"></div>
+
+
+  
+<!-- QR MODAL -->
+<div id="qrModal" class="qr-modal">
+  <div class="qr-modal-content">
+    <h2 class="qr-title">Scan QR untuk membuka file</h2>
+
+    <img id="qrImage" class="qr-image" src="" alt="QR Code">
+
+    <button class="qr-close-btn" onclick="closeQR()">Tutup</button>
+  </div>
+</div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p style="font-size:10px; color:#888;">Made with ❤️ by Akademik & Kemahasiswaan FMIPA Untan</p>
+  </footer>
+
+  <!-- SCRIPT -->
+  <script src="js/menu.js"></script>
+  <script src="js/clock.js"></script>
+  <script src="js/jstitlecode/tableapi.js"></script>
+  <script src="js/jstitlecode/decodstatsurat.js"></script>
+  
+  <script>
+const canvas = document.getElementById("pixelCanvas");
+const ctx = canvas.getContext("2d");
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resizeCanvas();
+window.addEventListener("resize", resizeCanvas);
+
+// Pixel kuning
+const pixelCount = 140;
+const pixels = [];
+
+const yellowColors = [
+  [255, 255, 180], 
+  [255, 240, 140],
+  [255, 230, 100],
+  [255, 210, 60]
+];
+
+for (let i = 0; i < pixelCount; i++) {
+  const color = yellowColors[Math.floor(Math.random() * yellowColors.length)];
+
+  pixels.push({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    size: Math.random() * 3 + 2,  
+    speedX: (Math.random() - 0.5) * 0.25,
+    speedY: (Math.random() - 0.5) * 0.25,
+    alpha: Math.random() * 0.20 + 0.10,
+    color: color
+  });
+}
+
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  pixels.forEach(p => {
+    ctx.fillStyle = `rgba(${p.color[0]}, ${p.color[1]}, ${p.color[2]}, ${p.alpha})`;
+    ctx.fillRect(p.x, p.y, p.size, p.size);
+
+    p.x += p.speedX;
+    p.y += p.speedY;
+
+    if (p.x < 0) p.x = canvas.width;
+    if (p.x > canvas.width) p.x = 0;
+    if (p.y < 0) p.y = canvas.height;
+    if (p.y > canvas.height) p.y = 0;
+  });
+
+  requestAnimationFrame(animate);
+}
+
+animate();
+
+</script>
+</body>
+</html>
