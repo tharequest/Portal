@@ -131,17 +131,6 @@
       "popupType": "image",
       "popupUrl": "https://raw.githubusercontent.com/tharequest/Portal/main/assets/images/1776065932155-slide2.jpg",
       "popupLabel": "Bagi Yang Akan/Sudah Sidang"
-    },
-    {
-      "id": "sl-1776152001817-0s4o",
-      "slider": 1,
-      "tag": "Pengumuman",
-      "title": "slide2222",
-      "desc": "222",
-      "imageUrl": "https://raw.githubusercontent.com/tharequest/Portal/main/assets/images/1776151997335-HFIcuQLakAAIrSX.jfif",
-      "popupType": "image",
-      "popupUrl": "https://raw.githubusercontent.com/tharequest/Portal/main/assets/images/1776151997335-HFIcuQLakAAIrSX.jfif",
-      "popupLabel": "slide2222"
     }
   ],
   "news": [
@@ -166,5 +155,5 @@
       "text": "Pemeliharaan Satu UNTAN dijadwalkan 12 April 2025 pukul 00.00–06.00 WIB."
     }
   ],
-  "updatedAt": "2026-04-14T07:33:22.127Z"
+  "updatedAt": "2026-04-14T15:29:03.046Z"
 }
