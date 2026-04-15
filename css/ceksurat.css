@@ -1,0 +1,462 @@
+/*
+ * ceksurat.css
+ * ─────────────────────────────────────────────
+ * CSS khusus halaman Cek Status Surat
+ * Menggunakan CSS variables dari base.css portal
+ * ─────────────────────────────────────────────
+ * Semua class pakai prefix "cs-" agar tidak
+ * bentrok dengan CSS portal lainnya
+ */
+
+/* ── Canvas partikel background ── */
+#pixelCanvas {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ── Pastikan konten di atas canvas ── */
+.cs-card-container,
+.cs-search-wrapper,
+.cs-hasil-wrapper,
+.cs-qr-modal {
+  position: relative;
+  z-index: 10;
+}
+
+/* ══════════════════════════════════════════
+   HERO CARD SCRAMBLE
+   ══════════════════════════════════════════ */
+.cs-card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 48px 20px 28px;
+  perspective: 1200px;
+}
+
+.cs-cyber-card {
+  width: min(440px, 90vw);
+  height: 220px;
+  background: var(--surface);
+  border-radius: 16px;
+  border: 2px solid var(--border);
+  box-shadow:
+    0 14px 40px rgba(26,79,138,0.10),
+    0 2px 8px rgba(26,79,138,0.06);
+  transition: transform 0.15s ease-out;
+  transform-style: preserve-3d;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Dot aksen warna accent portal (kuning) */
+.cs-cyber-card::before {
+  content: '';
+  width: 28px;
+  height: 28px;
+  background: var(--accent);
+  border-radius: 6px;
+  position: absolute;
+  top: 14px;
+  left: 14px;
+}
+
+/* Aksen sudut kanan bawah (warna primary) */
+.cs-cyber-card::after {
+  content: '';
+  width: 60px;
+  height: 60px;
+  background: var(--primary);
+  border-radius: 50%;
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  opacity: 0.08;
+}
+
+.cs-card-icon {
+  font-size: 28px;
+  margin-bottom: 4px;
+  filter: drop-shadow(0 2px 4px rgba(26,79,138,0.15));
+}
+
+.cs-judul-container {
+  text-align: center;
+  line-height: 1.2;
+}
+
+.cs-judul-surat {
+  font-family: 'Doto', monospace;
+  font-size: 36px;
+  color: var(--text-muted);
+  display: inline-block;
+  letter-spacing: 1px;
+}
+
+/* Badge pojok kanan atas */
+.cs-card-badge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: var(--primary);
+  color: #fff;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  padding: 3px 8px;
+  border-radius: 20px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* ══════════════════════════════════════════
+   SEARCH FORM
+   ══════════════════════════════════════════ */
+.cs-search-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 0 16px 32px;
+}
+
+.cs-search-card {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: 16px;
+  padding: 28px 28px 24px;
+  width: 100%;
+  max-width: 660px;
+  box-shadow: 0 4px 20px rgba(26,79,138,0.08);
+}
+
+.cs-search-title {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--primary-dark);
+  margin-bottom: 4px;
+}
+
+.cs-search-sub {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+}
+
+.cs-search-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.cs-search-input {
+  flex: 2;
+  min-width: 160px;
+  padding: 11px 16px;
+  border-radius: 10px;
+  border: 1.5px solid var(--border);
+  background: var(--bg);
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--text);
+  outline: none;
+  transition: border-color .2s, box-shadow .2s;
+}
+
+.cs-search-input:focus {
+  border-color: var(--primary-light);
+  box-shadow: 0 0 0 3px rgba(26,79,138,0.10);
+}
+
+.cs-search-select {
+  flex: 1.5;
+  min-width: 160px;
+  padding: 11px 14px;
+  border-radius: 10px;
+  border: 1.5px solid var(--border);
+  background: var(--bg);
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--text);
+  outline: none;
+  cursor: pointer;
+  transition: border-color .2s;
+}
+
+.cs-search-select:focus {
+  border-color: var(--primary-light);
+}
+
+.cs-search-btn {
+  padding: 11px 22px;
+  background: var(--primary);
+  color: #fff;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background .2s, transform .15s, box-shadow .2s;
+  white-space: nowrap;
+  box-shadow: 0 3px 12px rgba(26,79,138,0.25);
+}
+
+.cs-search-btn:hover {
+  background: var(--primary-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 5px 16px rgba(26,79,138,0.30);
+}
+
+.cs-search-btn:active { transform: translateY(0); }
+
+/* ── Validasi error ── */
+.cs-search-input.error {
+  border-color: #e24b4a !important;
+  background: #fef2f2 !important;
+  animation: cs-shake .3s ease;
+}
+
+@keyframes cs-shake {
+  0%,100% { transform: translateX(0); }
+  20%      { transform: translateX(-6px); }
+  40%      { transform: translateX(6px); }
+  60%      { transform: translateX(-4px); }
+  80%      { transform: translateX(4px); }
+}
+
+/* ══════════════════════════════════════════
+   HASIL PENCARIAN
+   ══════════════════════════════════════════ */
+.cs-hasil-wrapper {
+  max-width: 860px;
+  margin: 0 auto 48px;
+  padding: 0 16px;
+  animation: fadeIn .35s ease;
+}
+
+/* Loading state */
+.cs-loading {
+  text-align: center;
+  padding: 24px;
+  font-size: 14px;
+  color: var(--primary);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.cs-loading::before {
+  content: '';
+  width: 18px;
+  height: 18px;
+  border: 2.5px solid var(--border);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: cs-spin .7s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes cs-spin { to { transform: rotate(360deg); } }
+
+/* Tidak ditemukan */
+.cs-no-result {
+  text-align: center;
+  padding: 32px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #a32d2d;
+  background: #fef2f2;
+  border: 1.5px solid #f9c9c9;
+  border-radius: 12px;
+}
+
+/* Error / notifikasi */
+.cs-error-msg {
+  text-align: center;
+  padding: 14px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #a32d2d;
+  background: #fef2f2;
+  border: 1.5px solid #f9c9c9;
+  border-radius: 10px;
+  animation: fadeIn .3s ease;
+}
+
+/* ── Tabel hasil ── */
+.cs-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(26,79,138,0.10);
+  background: var(--surface);
+  animation: fadeIn .4s ease;
+}
+
+.cs-table thead th {
+  background: var(--primary);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 13px 16px;
+  text-align: left;
+  letter-spacing: 0.02em;
+}
+
+.cs-table thead th:first-child { border-radius: 12px 0 0 0; }
+.cs-table thead th:last-child  { border-radius: 0 12px 0 0; text-align: center; }
+
+.cs-table tbody tr {
+  background: var(--surface);
+  transition: background .15s;
+}
+
+.cs-table tbody tr:nth-child(even) {
+  background: #f0f5ff;
+}
+
+.cs-table tbody tr:hover {
+  background: #e8f0fd;
+}
+
+.cs-table tbody td {
+  padding: 12px 16px;
+  font-size: 13.5px;
+  color: var(--text);
+  border-bottom: 1px solid var(--border);
+}
+
+.cs-table tbody tr:last-child td { border-bottom: none; }
+.cs-table tbody td:last-child    { text-align: center; }
+
+/* Tombol lihat file */
+.cs-file-btn {
+  padding: 6px 14px;
+  background: var(--primary);
+  color: #fff;
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 600;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: background .2s, transform .15s;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.cs-file-btn:hover {
+  background: var(--primary-dark);
+  transform: scale(1.04);
+}
+
+/* ══════════════════════════════════════════
+   QR MODAL
+   ══════════════════════════════════════════ */
+.cs-qr-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(8,16,32,.75);
+  backdrop-filter: blur(6px);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  padding: 20px;
+}
+
+.cs-qr-modal.open { display: flex; animation: fadeIn .2s ease; }
+
+.cs-qr-content {
+  background: var(--surface);
+  border-radius: 18px;
+  padding: 28px 24px;
+  width: min(400px, 92vw);
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+  animation: popIn .25s ease;
+}
+
+@keyframes popIn {
+  from { opacity:0; transform:scale(.92); }
+  to   { opacity:1; transform:scale(1);   }
+}
+
+.cs-qr-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.cs-qr-icon { font-size: 24px; }
+
+.cs-qr-title {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--primary-dark);
+  margin: 0;
+}
+
+.cs-qr-image {
+  width: 240px;
+  height: 240px;
+  border-radius: 12px;
+  border: 2px solid var(--border);
+  display: block;
+  margin: 0 auto 12px;
+  background: var(--bg);
+}
+
+.cs-qr-note {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+}
+
+.cs-qr-close {
+  width: 100%;
+  padding: 12px;
+  background: var(--primary);
+  color: #fff;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background .2s;
+}
+
+.cs-qr-close:hover { background: var(--primary-dark); }
+
+/* ══════════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════════ */
+@media (max-width: 600px) {
+  .cs-card-container { padding: 32px 16px 20px; }
+  .cs-judul-surat    { font-size: 28px; }
+  .cs-cyber-card     { height: 190px; }
+  .cs-search-card    { padding: 20px 16px 18px; }
+  .cs-search-row     { flex-direction: column; }
+  .cs-search-input,
+  .cs-search-select,
+  .cs-search-btn     { width: 100%; }
+  .cs-table thead th,
+  .cs-table tbody td { padding: 10px 10px; font-size: 12.5px; }
+  .cs-qr-image       { width: 200px; height: 200px; }
+}

@@ -1,154 +1,220 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Status Surat Akademik</title>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+  <title>Cek Status Surat – Portal Informasi FMIPA UNTAN</title>
 
-  <!-- STYLE UTAMA -->
-  <link href="https://fonts.googleapis.com/css2?family=Doto:wght@600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/header.css" />
-  <link rel="stylesheet" href="css/statsurat.css" />
+  <!-- Font portal -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,600&display=swap" rel="stylesheet"/>
+  <!-- Font scramble effect -->
+  <link href="https://fonts.googleapis.com/css2?family=Doto:wght@600&display=swap" rel="stylesheet"/>
 
+  <!-- CSS Portal (urutan penting) -->
+  <link rel="stylesheet" href="css/base.css"/>
+  <link rel="stylesheet" href="css/animations.css"/>
+  <link rel="stylesheet" href="css/header.css"/>
+  <link rel="stylesheet" href="css/footer.css"/>
+
+  <!-- CSS khusus Cek Surat -->
+  <link rel="stylesheet" href="css/ceksurat.css"/>
 </head>
-
 <body>
-<canvas id="pixelCanvas" style="position:fixed; inset:0; z-index:5; pointer-events:none;"></canvas>
 
-  <!-- HEADER -->
-  <header>
-    <div class="header-left">
-      <img src="assets/images/logo-untan.png" alt="Logo FMIPA Untan">
-
-      <nav>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <!-- <li><a href="#">Panduan</a></li> -->
-
-        </ul>
-      </nav>
-    </div>
-
-    <!-- JAM REALTIME -->
-    <div class="clock-header">
-      <span id="tanggal"></span> | <span id="jam"></span>
-    </div>
-
-    <div class="menu-toggle" id="menu-toggle">
+<!-- ═══ HEADER PORTAL ════════════════════════════════════════════ -->
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="brand">
+      <div class="logo-group">
+        <img src="assets/images/logo-untan.png" alt="Logo FMIPA UNTAN"/>
+      </div>
+      <div class="logo-divider"></div>
+      <div class="brand-text">
+        <span class="label">Universitas Tanjungpura</span>
+        <span class="name">Portal Informasi</span>
+      </div>
+    </a>
+    <div class="header-spacer"></div>
+    <nav class="main-nav">
+      <a href="index.html">Beranda</a>
+      <a href="#">Jenis Layanan</a>
+      <a href="#">Bio Ijazah</a>
+      <a href="#">Satu UNTAN</a>
+      <a href="ceksurat.html" class="active">Cek Surat</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Toggle Menu">
       <span></span><span></span><span></span>
-    </div>
-  </header>
-
-  <!-- SEARCH FORM -->
-  <div class="bg-grid"></div>
-<div class="card-container">
-  <div class="cyber-card" id="tilt-card">
-    <div class="judul-container"> 
-        <div id="linesurat" class="judul-surat">Cek Status</div><br>
-        <div id="linesurat2" class="judul-surat">Surat Mahasiswa</div>
-    </div>
+    </button>
   </div>
-</div>
-  <!-- SEARCH field -->
-    <div class="search-container">
-      <input type="text" id="searchInput" class="search-input" placeholder="Masukkan Nama atau NIM anda...">
-       
-    <select id="jenisSurat" class="search-select">
-     <option value="" selected disabled>Pilih Jenis Surat</option>
-     <option value="aktif_kuliah">Surat Aktif Kuliah</option>
-     <option value="ket_lulus">Surat Keterangan Lulus</option>
-     <option value="cuti_kuliah">Surat Cuti Kuliah</option>
-     <option value="undur_diri">Surat Pengunduran Diri</option>
-     <option value="pindah_kuliah">Surat Pindah Kuliah</option>
-    </select>
-
-
-      <button class="search-btn" onclick="cariSurat()">Cari</button>
-    </div>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="index.html">🏠 Beranda</a>
+    <a href="#">📋 Jenis Layanan</a>
+    <a href="#">🎓 Bio Ijazah</a>
+    <a href="#">🏛️ Satu UNTAN</a>
+    <a href="ceksurat.html">✉️ Cek Surat</a>
   </div>
-  <div id="hasil"></div>
+</header>
 
+<!-- ═══ BACKGROUND PARTIKEL (canvas) ═════════════════════════════ -->
+<canvas id="pixelCanvas"></canvas>
 
-  
-<!-- QR MODAL -->
-<div id="qrModal" class="qr-modal">
-  <div class="qr-modal-content">
-    <h2 class="qr-title">Scan QR untuk membuka file</h2>
-
-    <img id="qrImage" class="qr-image" src="" alt="QR Code">
-
-    <button class="qr-close-btn" onclick="closeQR()">Tutup</button>
+<!-- ═══ HERO CARD SCRAMBLE ════════════════════════════════════════ -->
+<div class="cs-card-container">
+  <div class="cs-cyber-card" id="tilt-card">
+    <!-- Icon amplop -->
+    <div class="cs-card-icon">✉️</div>
+    <div class="cs-judul-container">
+      <div id="linesurat"  class="cs-judul-surat">Cek Status</div>
+      <div id="linesurat2" class="cs-judul-surat">Surat Mahasiswa</div>
+    </div>
+    <!-- Badge portal di pojok kanan bawah -->
+    <div class="cs-card-badge">FMIPA UNTAN</div>
   </div>
 </div>
 
-  <!-- FOOTER -->
-  <footer>
-    <p style="font-size:10px; color:#888;">Made with ❤️ by Akademik & Kemahasiswaan FMIPA Untan</p>
-  </footer>
+<!-- ═══ SEARCH FORM ═══════════════════════════════════════════════ -->
+<div class="cs-search-wrapper">
+  <div class="cs-search-card">
+    <h2 class="cs-search-title">Cari Status Surat Kamu</h2>
+    <p class="cs-search-sub">Masukkan nama atau NIM dan pilih jenis surat</p>
 
-  <!-- SCRIPT -->
-  <script src="js/main.js"></script>
-  <script src="js/clock.js"></script>
-  <!-- <script src="js/jstitlecode/tableapi.js"></script> -->
-  <script src="js/statsurat.js"></script>
-  
-  <script>
-const canvas = document.getElementById("pixelCanvas");
-const ctx = canvas.getContext("2d");
+    <div class="cs-search-row">
+      <input
+        type="text"
+        id="searchInput"
+        class="cs-search-input"
+        placeholder="Nama atau NIM..."
+        autocomplete="off"
+      />
+      <select id="jenisSurat" class="cs-search-select">
+        <option value="" selected disabled>Pilih Jenis Surat</option>
+        <option value="aktif_kuliah">Surat Aktif Kuliah</option>
+        <option value="ket_lulus">Surat Keterangan Lulus</option>
+        <option value="cuti_kuliah">Surat Cuti Kuliah</option>
+        <option value="undur_diri">Surat Pengunduran Diri</option>
+        <option value="pindah_kuliah">Surat Pindah Kuliah</option>
+      </select>
+      <button class="cs-search-btn" onclick="cariSurat()">
+        <span>🔍</span> Cari
+      </button>
+    </div>
+  </div>
+</div>
 
-function resizeCanvas() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-}
-resizeCanvas();
-window.addEventListener("resize", resizeCanvas);
+<!-- ═══ HASIL PENCARIAN ═══════════════════════════════════════════ -->
+<div id="hasil" class="cs-hasil-wrapper"></div>
 
-// Pixel kuning
-const pixelCount = 140;
-const pixels = [];
+<!-- ═══ QR MODAL ══════════════════════════════════════════════════ -->
+<div id="qrModal" class="cs-qr-modal">
+  <div class="cs-qr-content">
+    <div class="cs-qr-header">
+      <span class="cs-qr-icon">📄</span>
+      <h3 class="cs-qr-title">Scan QR untuk membuka file</h3>
+    </div>
+    <img id="qrImage" class="cs-qr-image" src="" alt="QR Code"/>
+    <p class="cs-qr-note">Arahkan kamera HP ke QR code di atas</p>
+    <button class="cs-qr-close" onclick="closeQR()">✕ Tutup</button>
+  </div>
+</div>
 
-const yellowColors = [
-  [255, 255, 180], 
-  [255, 240, 140],
-  [255, 230, 100],
-  [255, 210, 60]
-];
+<!-- ═══ FOOTER PORTAL ═════════════════════════════════════════════ -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="index.html" class="brand">
+        <div class="logo-group">
+          <img src="assets/images/logo-untan.png" alt="Logo FMIPA UNTAN"/>
+        </div>
+        <div class="logo-divider"></div>
+        <div class="brand-text">
+          <span class="label">Universitas Tanjungpura</span>
+          <span class="name">Portal Informasi</span>
+        </div>
+      </a>
+      <p class="footer-desc">Portal informasi resmi FMIPA Universitas Tanjungpura — layanan akademik dan administrasi secara digital.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Layanan</h5>
+      <ul>
+        <li><a href="#">Jenis Layanan</a></li>
+        <li><a href="#">Bio Ijazah</a></li>
+        <li><a href="#">Satu UNTAN</a></li>
+        <li><a href="ceksurat.html">Cek Surat</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Informasi</h5>
+      <ul>
+        <li><a href="#">Pengumuman</a></li>
+        <li><a href="#">Berita Kampus</a></li>
+        <li><a href="#">Jadwal Akademik</a></li>
+        <li><a href="#">Kalender Kegiatan</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Bantuan</h5>
+      <ul>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Kontak</a></li>
+        <li><a href="#">Kebijakan Privasi</a></li>
+        <li><a href="admin/login.html">🔐 Admin</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Universitas Tanjungpura. Hak cipta dilindungi.</span>
+    <span>Made with ❤️ by Akademik &amp; Kemahasiswaan FMIPA Untan</span>
+  </div>
+</footer>
 
-for (let i = 0; i < pixelCount; i++) {
-  const color = yellowColors[Math.floor(Math.random() * yellowColors.length)];
+<!-- JS Portal (hamburger) -->
+<script src="js/header.js"></script>
 
-  pixels.push({
-    x: Math.random() * canvas.width,
-    y: Math.random() * canvas.height,
-    size: Math.random() * 3 + 2,  
-    speedX: (Math.random() - 0.5) * 0.25,
-    speedY: (Math.random() - 0.5) * 0.25,
-    alpha: Math.random() * 0.20 + 0.10,
-    color: color
+<!-- JS Khusus Cek Surat -->
+<script src="js/ceksurat.js"></script>
+
+<!-- Partikel kuning (background) -->
+<script>
+(function() {
+  const canvas = document.getElementById('pixelCanvas');
+  const ctx    = canvas.getContext('2d');
+
+  function resize() {
+    canvas.width  = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  const COLORS = [
+    [255,255,180],[255,240,140],[255,230,100],[255,210,60]
+  ];
+  const pixels = Array.from({ length: 120 }, () => {
+    const c = COLORS[Math.floor(Math.random() * COLORS.length)];
+    return {
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      size: Math.random() * 3 + 2,
+      vx: (Math.random() - .5) * .25,
+      vy: (Math.random() - .5) * .25,
+      a: Math.random() * .18 + .08,
+      c
+    };
   });
-}
 
-function animate() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-  pixels.forEach(p => {
-    ctx.fillStyle = `rgba(${p.color[0]}, ${p.color[1]}, ${p.color[2]}, ${p.alpha})`;
-    ctx.fillRect(p.x, p.y, p.size, p.size);
-
-    p.x += p.speedX;
-    p.y += p.speedY;
-
-    if (p.x < 0) p.x = canvas.width;
-    if (p.x > canvas.width) p.x = 0;
-    if (p.y < 0) p.y = canvas.height;
-    if (p.y > canvas.height) p.y = 0;
-  });
-
-  requestAnimationFrame(animate);
-}
-
-animate();
-
+  function loop() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    pixels.forEach(p => {
+      ctx.fillStyle = `rgba(${p.c[0]},${p.c[1]},${p.c[2]},${p.a})`;
+      ctx.fillRect(p.x, p.y, p.size, p.size);
+      p.x = (p.x + p.vx + canvas.width)  % canvas.width;
+      p.y = (p.y + p.vy + canvas.height) % canvas.height;
+    });
+    requestAnimationFrame(loop);
+  }
+  loop();
+})();
 </script>
+
 </body>
 </html>
