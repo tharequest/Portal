@@ -14,7 +14,7 @@
  */
 
 // Instruksi kepribadian bot
-const SYSTEM_PROMPT = `Kamu adalah Asisten Portal Informasi Fakultas MIPA Universitas Tanjungpura (UNTAN). Namamu "Portal Bot".
+const SYSTEM_PROMPT = `Kamu adalah Asisten Portal Informasi Fakultas MIPA Universitas Tanjungpura (UNTAN). Namamu "Asmanita AI".
 Bantu mahasiswa, dosen, dan masyarakat mendapatkan informasi layanan portal FMIPA UNTAN.
 Topik yang bisa dijawab: Bio Ijazah, Jenis Layanan, Satu UNTAN, Cek Surat, informasi akademik FMIPA.
 Gaya bicara: ramah, profesional, bahasa Indonesia natural, singkat dan to the point.
@@ -64,7 +64,7 @@ function initChat() {
 
   // Pesan sambutan
   addChatMsg('bot',
-    'Halo! Saya <strong>Portal Bot</strong> 👋<br>' +
+    'Halo! Saya <strong>Asmanita AI</strong> 👋<br>' +
     'Siap membantu informasi layanan Portal FMIPA UNTAN.'
   );
 }
