@@ -81,7 +81,7 @@ function addChatMsg(role, text) {
   const div = document.createElement('div');
   div.className = 'msg ' + role;
 
-  const botAvatar  = '<div class="msg-avatar">🏛️</div>';
+  const botAvatar  = '<div class="msg-avatar">🦸‍♀️</div>';
   const userAvatar = '<div class="msg-avatar" style="background:var(--accent);font-size:10px;font-weight:700;">Anda</div>';
 
   div.innerHTML = `
@@ -151,7 +151,7 @@ async function sendChat() {
     });
 
     const data  = await res.json();
-    const reply = data.content?.[0]?.text || 'Maaf, terjadi kesalahan. Silakan coba lagi.';
+    const reply = data.content?.[0]?.text || 'Maaf, Saya masih dalam tahap pengembangan jadi belum bisa menjawab pertanyaan Anda 😊. Silakan coba lagi nanti.';
 
     removeTyping();
     chatHistory.push({ role: 'assistant', content: reply });
