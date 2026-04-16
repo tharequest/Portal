@@ -7,89 +7,240 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    :root{
-      --primary:#1a4f8a;--primary-dark:#0e3260;--primary-light:#2d6ab5;
-      --accent:#e8a020;--bg:#f0f4fa;--surface:#fff;
-      --text:#1c2b3a;--muted:#5a6e82;--border:#dce5f0;
-      --danger:#d94444;
-    }
-    body{
-      font-family:'Plus Jakarta Sans',sans-serif;
-      background:var(--bg);min-height:100vh;
-      display:flex;align-items:center;justify-content:center;
-      padding:20px;position:relative;overflow:hidden;
-    }
-    body::before{
-      content:'';position:absolute;inset:0;
-      background:
-        radial-gradient(circle at 15% 25%,rgba(26,79,138,.09) 0%,transparent 55%),
-        radial-gradient(circle at 85% 75%,rgba(232,160,32,.07) 0%,transparent 55%);
-      pointer-events:none;
-    }
-    .card{
-      background:var(--surface);border-radius:22px;
-      padding:44px 40px 36px;width:100%;max-width:420px;
-      box-shadow:0 20px 60px rgba(26,79,138,.13),0 4px 16px rgba(26,79,138,.07);
-      border:1.5px solid var(--border);position:relative;z-index:1;
-      animation:up .4s ease both;
-    }
-
-    .logo-box img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+:root{
+  --primary:#1a4f8a;
+  --primary-dark:#0e3260;
+  --primary-light:#2d6ab5;
+  --accent:#e8a020;
+  --bg:#f0f4fa;
+  --surface:#fff;
+  --text:#1c2b3a;
+  --muted:#5a6e82;
+  --border:#dce5f0;
+  --danger:#d94444;
 }
-    @keyframes up{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-    .logo-row{display:flex;align-items:center;gap:12px;margin-bottom:28px}
-    .logo-box{
-      width:46px;height:46px;
-      background:linear-gradient(135deg,var(--primary),var(--primary-light));
-      border-radius:12px;display:flex;align-items:center;justify-content:center;
-      box-shadow:0 4px 14px rgba(26,79,138,.3);flex-shrink:0;
-    }
-    .logo-box svg{width:26px;height:26px}
-    .logo-txt .sup{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
-    .logo-txt .main{font-size:17px;font-weight:800;color:var(--primary-dark)}
-    h1{font-size:22px;font-weight:800;color:var(--primary-dark);margin-bottom:6px}
-    .sub{font-size:13px;color:var(--muted);margin-bottom:28px;line-height:1.5}
-    .fg{margin-bottom:18px}
-    label{display:block;font-size:12.5px;font-weight:700;color:var(--primary-dark);margin-bottom:7px}
-    .iw{position:relative}
-    .iico{position:absolute;left:13px;top:50%;transform:translateY(-50%);font-size:15px;color:var(--muted);pointer-events:none}
-    input[type=text],input[type=password]{
-      width:100%;padding:11px 40px 11px 40px;
-      border-radius:10px;border:1.5px solid var(--border);
-      font-family:inherit;font-size:14px;color:var(--text);
-      background:var(--bg);transition:border-color .2s,box-shadow .2s;outline:none;
-    }
-    input:focus{border-color:var(--primary-light);box-shadow:0 0 0 3px rgba(26,79,138,.1)}
-    input.err{border-color:var(--danger)}
-    .eye{position:absolute;right:13px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;font-size:15px;color:var(--muted);padding:2px}
-    .eye:hover{color:var(--primary)}
-    .btn-login{
-      width:100%;padding:13px;border-radius:10px;
-      background:linear-gradient(135deg,var(--primary),var(--primary-light));
-      color:#fff;font-family:inherit;font-size:14.5px;font-weight:700;
-      border:none;cursor:pointer;margin-top:8px;
-      transition:transform .15s,box-shadow .15s;
-      box-shadow:0 4px 14px rgba(26,79,138,.3);
-      display:flex;align-items:center;justify-content:center;gap:8px;
-    }
-    .btn-login:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(26,79,138,.35)}
-    .btn-login:disabled{opacity:.65;cursor:not-allowed;transform:none}
-    .spinner{width:16px;height:16px;border:2.5px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite;display:none}
-    .btn-login.loading .spinner{display:block}
-    .btn-login.loading .btxt{display:none}
-    @keyframes spin{to{transform:rotate(360deg)}}
-    .errmsg{
-      display:none;background:#fde8e8;border:1.5px solid #f9c9c9;
-      color:var(--danger);border-radius:8px;padding:10px 14px;
-      font-size:13px;font-weight:600;margin-top:14px;align-items:center;gap:8px;
-    }
-    .errmsg.show{display:flex}
-    .footer-link{text-align:center;margin-top:22px;font-size:12px;color:var(--muted)}
-    .footer-link a{color:var(--primary);text-decoration:none;font-weight:600}
-    @media(max-width:480px){.card{padding:32px 22px 28px}}
+
+body{
+  font-family:'Plus Jakarta Sans',sans-serif;
+  background:var(--bg);
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  position:relative;
+  overflow:hidden;
+}
+
+body::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 15% 25%,rgba(26,79,138,.09),transparent 55%),
+    radial-gradient(circle at 85% 75%,rgba(232,160,32,.07),transparent 55%);
+  pointer-events:none;
+}
+
+/* ===== CARD ===== */
+.card{
+  background:var(--surface);
+  border-radius:22px;
+  padding:44px 40px 36px;
+  width:100%;
+  max-width:420px;
+  box-shadow:0 20px 60px rgba(26,79,138,.13),0 4px 16px rgba(26,79,138,.07);
+  border:1.5px solid var(--border);
+  position:relative;
+  z-index:1;
+  animation:up .4s ease both;
+}
+
+@keyframes up{
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* ===== LOGO ===== */
+.logo-row{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:28px;
+}
+
+.logo-box{
+  width:52px;
+  height:52px;
+  background:transparent; /* 🔥 tidak pakai box biru lagi */
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
+}
+
+.logo-box img{
+  width:90%;
+  height:90%;
+  object-fit:contain;
+}
+
+/* TEXT LOGO */
+.logo-txt .sup{
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--accent);
+}
+
+.logo-txt .main{
+  font-size:17px;
+  font-weight:800;
+  color:var(--primary-dark);
+}
+
+/* ===== TEXT ===== */
+h1{
+  font-size:22px;
+  font-weight:800;
+  color:var(--primary-dark);
+  margin-bottom:6px;
+}
+
+.sub{
+  font-size:13px;
+  color:var(--muted);
+  margin-bottom:28px;
+  line-height:1.5;
+}
+
+/* ===== FORM ===== */
+.fg{margin-bottom:18px}
+
+label{
+  display:block;
+  font-size:12.5px;
+  font-weight:700;
+  color:var(--primary-dark);
+  margin-bottom:7px;
+}
+
+.iw{position:relative}
+
+.iico{
+  position:absolute;
+  left:13px;
+  top:50%;
+  transform:translateY(-50%);
+  font-size:15px;
+  color:var(--muted);
+  pointer-events:none;
+}
+
+input[type=text],
+input[type=password]{
+  width:100%;
+  padding:11px 40px;
+  border-radius:10px;
+  border:1.5px solid var(--border);
+  font-family:inherit;
+  font-size:14px;
+  color:var(--text);
+  background:var(--bg);
+  outline:none;
+  transition:border-color .2s,box-shadow .2s;
+}
+
+input:focus{
+  border-color:var(--primary-light);
+  box-shadow:0 0 0 3px rgba(26,79,138,.1);
+}
+
+input.err{
+  border-color:var(--danger);
+}
+
+/* ICON PASSWORD */
+.eye{
+  position:absolute;
+  right:13px;
+  top:50%;
+  transform:translateY(-50%);
+  background:none;
+  border:none;
+  cursor:pointer;
+  font-size:15px;
+  color:var(--muted);
+}
+
+.eye:hover{color:var(--primary)}
+
+/* ===== BUTTON ===== */
+.btn-login{
+  width:100%;
+  padding:13px;
+  border-radius:10px;
+  background:linear-gradient(135deg,var(--primary),var(--primary-light));
+  color:#fff;
+  font-family:inherit;
+  font-size:14.5px;
+  font-weight:700;
+  border:none;
+  cursor:pointer;
+  margin-top:8px;
+  transition:transform .15s,box-shadow .15s;
+  box-shadow:0 4px 14px rgba(26,79,138,.3);
+}
+
+.btn-login:hover{
+  transform:translateY(-1px);
+  box-shadow:0 6px 20px rgba(26,79,138,.35);
+}
+
+.btn-login:disabled{
+  opacity:.65;
+  cursor:not-allowed;
+  transform:none;
+}
+
+/* ===== ERROR ===== */
+.errmsg{
+  display:none;
+  background:#fde8e8;
+  border:1.5px solid #f9c9c9;
+  color:var(--danger);
+  border-radius:8px;
+  padding:10px 14px;
+  font-size:13px;
+  font-weight:600;
+  margin-top:14px;
+}
+
+.errmsg.show{
+  display:block;
+}
+
+/* ===== FOOTER ===== */
+.footer-link{
+  text-align:center;
+  margin-top:22px;
+  font-size:12px;
+  color:var(--muted);
+}
+
+.footer-link a{
+  color:var(--primary);
+  text-decoration:none;
+  font-weight:600;
+}
+
+/* ===== MOBILE ===== */
+@media(max-width:480px){
+  .card{
+    padding:32px 22px 28px;
+  }
+}
   </style>
 </head>
 <body>
