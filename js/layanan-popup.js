@@ -14,27 +14,27 @@ const LAYANAN_DATA = [
   {
     name: "Surat Aktif Kuliah",
     desc: "Permohonan surat keterangan aktif kuliah",
-    url:  "https://forms.gle/GANTI_LINK_1"
+    url:  "https://docs.google.com/forms/d/e/1FAIpQLSdQoxaDKvz17ElZSTW7zuV4p-9SMfIAqIz015WU0LiEa6FywA/viewform"
   },
   {
     name: "Surat Keterangan Lulus",
     desc: "Permohonan SKL sebelum ijazah terbit",
-    url:  "https://forms.gle/GANTI_LINK_2"
+    url:  "https://docs.google.com/forms/d/e/1FAIpQLSeleQzeEElYtt8PoW8tHm5wL4t6GJbDzfRjhQ6Bwn3KHtSzbg/viewform"
   },
   {
     name: "Surat Cuti Kuliah",
     desc: "Pengajuan cuti semester aktif",
-    url:  "https://forms.gle/GANTI_LINK_3"
+    url:  "https://docs.google.com/forms/d/e/1FAIpQLSfcv_u0UlgJgJ_PuKC_ELfI5UUwLufISUdXlNl37VD_NMSAOg/viewform"
   },
   {
     name: "Surat Pengunduran Diri",
     desc: "Permohonan pengunduran diri mahasiswa",
-    url:  "https://forms.gle/GANTI_LINK_4"
+    url:  "https://docs.google.com/forms/d/e/1FAIpQLSfzD_poqcDT_U3d_vmsZOPFXewTzubYSZyNY7FpyObYL7FKGA/viewform"
   },
   {
     name: "Surat Pindah Kuliah",
     desc: "Pengajuan pindah ke perguruan tinggi lain",
-    url:  "https://forms.gle/GANTI_LINK_5"
+    url:  "https://docs.google.com/forms/d/e/1FAIpQLSeoHxHVHXY86d_acF92oZfyxzsQxoPrppB1z5bFfE3oRRKqMw/viewform"
   },
   {
     name: "Surat Rekomendasi",
