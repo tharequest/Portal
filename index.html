@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="css/footer.css"/>
   <link rel="stylesheet" href="css/chatbot.css"/>
   <link rel="stylesheet" href="css/layanan-popup.css"/>
+  <link rel="stylesheet" href="kontak.css">
 </head>
 <body>
 
@@ -104,6 +105,8 @@
       target="_blank"rel="noopener noreferrer">Draft Bebas Laboratorium</a>
     </div>
   </div>
+<!--Kontak-->  
+  <a onclick="openKontakPopup()" style="cursor:pointer">Kontak</a>
 <!--Ceksurat-->
   <a href="https://xandria.pduntan.id/login" target="_blank">Bioijazah</a>
   <a href="https://satu.untan.ac.id/gate/login" target="_blank">Satu UNTAN</a>
@@ -182,10 +185,10 @@
        target="_blank" rel="noopener noreferrer">
        Draft Bebas Laboratorium
     </a>
-
+    
   </div>
-
-  <!-- LINK LAIN -->
+  <!-- Menu lain di mobile-->
+  <a onclick="openKontakPopup()" style="cursor:pointer">Kontak</a>
   <a href="https://xandria.pduntan.id/login" target="_blank">Bioijazah</a>
   <a href="https://satu.untan.ac.id/gate/login" target="_blank">Satu UNTAN</a>
   <a href="ceksurat.html">Cek Surat</a>
@@ -244,6 +247,22 @@
     </a>
   </div>
 </section>
+
+<!-- ═══ Popup Kontak di Header ═══════════════════════════════════ -->
+<div id="kontak-overlay" class="kontak-overlay">
+  <div class="kontak-modal">
+    <button class="kontak-close" id="kontak-close-btn">&#x2715;</button>
+    <div class="kontak-header">
+      <div class="kontak-header-icon">📞</div>
+      <div class="kontak-header-text">
+        <div class="kontak-title">Hubungi Kami</div>
+        <div class="kontak-subtitle">Klik nama untuk chat WhatsApp</div>
+      </div>
+    </div>
+    <div class="kontak-list" id="kontak-list"></div>
+    <div class="kontak-footer">Aktif pada jam kerja · Senin – Jumat</div>
+  </div>
+</div>
 
 <!-- ═══ INFO STRIP ═══════════════════════════════════ -->
 <section class="info-strip">
@@ -398,6 +417,7 @@
 <script src="js/chatbot.js"></script>
 <script src="js/app.js"></script>
 <script src="js/layanan-popup.js"></script>
+<script src="kontak.js"></script>
 
 </body>
 </html>
