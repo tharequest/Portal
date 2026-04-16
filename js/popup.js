@@ -143,3 +143,5 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.key === 'Escape') closePopup();
   });
 });
+const popupInner = document.getElementById("popupInner");
+if (!popupInner) return;
