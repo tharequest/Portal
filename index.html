@@ -395,18 +395,29 @@
 </div>
 
 <!-- ═══ Popup Kontak di Header ═══════════════════════════════════ -->
-<div id="kontak-overlay" class="kontak-overlay">
-  <div class="kontak-modal">
-    <button class="kontak-close" id="kontak-close-btn">&#x2715;</button>
-    <div class="kontak-header">
-      <div class="kontak-header-icon">📞</div>
-      <div class="kontak-header-text">
-        <div class="kontak-title">Hubungi Kami</div>
-        <div class="kontak-subtitle">Klik nama untuk chat WhatsApp</div>
+<div id="kt-overlay" class="kt-overlay">
+  <div class="kt-modal">
+
+    <div class="kt-header">
+      <div class="kt-header-icon">
+        📞
       </div>
+      <div>
+        <div class="kt-header-title">Hubungi Kami</div>
+        <div class="kt-header-sub">Klik nama untuk chat WhatsApp</div>
+      </div>
+      <button class="kt-close" id="kt-close-btn">✕</button>
     </div>
-    <div class="kontak-list" id="kontak-list"></div>
-    <div class="kontak-footer">Aktif pada jam kerja · Senin – Jumat</div>
+
+    <div class="kt-list" id="kt-list"></div>
+
+    <div class="kt-footer">
+      <span class="kt-footer-note">
+        Aktif pada jam kerja · Senin – Jumat
+      </span>
+      <span class="kt-badge">WhatsApp</span>
+    </div>
+
   </div>
 </div>
 
