@@ -3,11 +3,6 @@
  * ─────────────────────────────────────────────
  * Popup daftar Google Form untuk kartu
  * "Jenis Layanan" di halaman utama
- *
- * CARA GANTI LINK GOOGLE FORM:
- *   Edit bagian LAYANAN_DATA di bawah
- *   Ganti url: "https://forms.gle/..." dengan link asli
- * ─────────────────────────────────────────────
  */
 
 const LAYANAN_DATA = [
@@ -37,19 +32,19 @@ const LAYANAN_DATA = [
     url:  "https://docs.google.com/forms/d/e/1FAIpQLSeoHxHVHXY86d_acF92oZfyxzsQxoPrppB1z5bFfE3oRRKqMw/viewform"
   },
   {
-    name: "Surat Rekomendasi",
-    desc: "Permohonan surat rekomendasi dosen/dekan",
-    url:  "https://forms.gle/GANTI_LINK_6"
+    name: "Surat Pengembalian Dana",
+    desc: "Permohonan surat pengembalian dana pendidikan",
+    url:  "https://docs.google.com/forms/d/e/1FAIpQLSeev6qHtma1S3mRIbgzBHgqEtqnlLw5rW3t13z9Mk4H03RVeg/viewform"
   },
   {
-    name: "Bebas Laboratorium",
-    desc: "Permohonan surat bebas lab untuk yudisium",
-    url:  "https://forms.gle/GANTI_LINK_7"
+    name: "Draf Bebas Laboratorium",
+    desc: "Contoh Draf Surat Bebas Laboratorium di Lingkungan Fakultas MIPA",
+    url:  "https://docs.google.com/document/d/10O5ifI5A3WheOjYs9ZWEKtOAe9NsoB7r/edit?rtpof=true&tab=t.0"
   },
   {
-    name: "Verifikasi Ijazah",
-    desc: "Permintaan legalisasi dan verifikasi ijazah",
-    url:  "https://forms.gle/GANTI_LINK_8"
+    name: "Draf Syarat Sidang",
+    desc: "Dokumen Syarat Sidang",
+    url:  "https://docs.google.com/document/d/1QQFK0vpB2VYwZN9XRjxiJWRfck6HUCTu/edit"
   }
 ];
 
