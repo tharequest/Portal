@@ -1,0 +1,270 @@
+/*
+ * layanan-popup.css
+ * ─────────────────────────────────────────────
+ * CSS khusus popup Jenis Layanan
+ * Semua class pakai prefix "lp-" agar tidak
+ * bentrok dengan CSS portal lainnya
+ * ─────────────────────────────────────────────
+ * Kalau mau ganti lebar popup → ubah max-width
+ *   di .lp-modal
+ */
+
+/* ── Overlay backdrop ── */
+.lp-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  background: rgba(14, 50, 96, 0.20);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.lp-overlay.lp-open {
+  display: flex;
+  animation: lpFadeIn .2s ease;
+}
+
+@keyframes lpFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ── Modal box ── */
+.lp-modal {
+  background: #ffffff;
+  border-radius: 20px;
+  border: 1px solid rgba(26,79,138,0.12);
+  width: 100%;
+  max-width: 480px;
+  overflow: hidden;
+  box-shadow:
+    0 24px 60px rgba(14,50,96,0.14),
+    0 4px 16px rgba(14,50,96,0.08);
+  animation: lpSlideUp .28s cubic-bezier(.34,1.56,.64,1);
+}
+
+@keyframes lpSlideUp {
+  from { opacity: 0; transform: translateY(16px) scale(.97); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* ── Header ── */
+.lp-header {
+  padding: 18px 18px 14px;
+  border-bottom: 0.5px solid #dce5f0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.lp-header-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: #e8f0fd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.lp-header-icon svg {
+  width: 20px;
+  height: 20px;
+  stroke: #1a4f8a;
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.lp-header-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0e3260;
+}
+
+.lp-header-sub {
+  font-size: 12px;
+  color: #5a6e82;
+  margin-top: 2px;
+}
+
+.lp-close {
+  margin-left: auto;
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  border: 0.5px solid #dce5f0;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  color: #5a6e82;
+  flex-shrink: 0;
+  transition: background .15s, color .15s;
+}
+
+.lp-close:hover { background: #f4f7fb; color: #0e3260; }
+
+/* ── Search bar ── */
+.lp-search-wrap {
+  padding: 12px 18px;
+  border-bottom: 0.5px solid #dce5f0;
+  position: relative;
+}
+
+.lp-search-wrap svg {
+  position: absolute;
+  left: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 14px;
+  height: 14px;
+  stroke: #5a6e82;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  pointer-events: none;
+}
+
+#lp-search {
+  width: 100%;
+  height: 36px;
+  padding: 0 12px 0 34px;
+  border-radius: 9px;
+  border: 1px solid #dce5f0;
+  background: #f4f7fb;
+  font-family: inherit;
+  font-size: 13px;
+  color: #1c2b3a;
+  outline: none;
+  transition: border-color .2s, box-shadow .2s;
+}
+
+#lp-search:focus {
+  border-color: #2d6ab5;
+  box-shadow: 0 0 0 3px rgba(26,79,138,0.10);
+}
+
+/* ── Daftar form ── */
+.lp-list {
+  padding: 8px 10px;
+  max-height: 340px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.lp-list::-webkit-scrollbar       { width: 4px; }
+.lp-list::-webkit-scrollbar-thumb { background: #dce5f0; border-radius: 4px; }
+
+/* ── Item form ── */
+.lp-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 10px;
+  border-radius: 10px;
+  border: 0.5px solid transparent;
+  text-decoration: none;
+  transition: background .15s, border-color .15s;
+}
+
+.lp-item:hover {
+  background: #f4f7fb;
+  border-color: #dce5f0;
+}
+
+.lp-num {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  flex-shrink: 0;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.lp-info { flex: 1; min-width: 0; }
+
+.lp-name {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #1c2b3a;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.lp-desc {
+  font-size: 11.5px;
+  color: #5a6e82;
+  margin-top: 1px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.lp-arrow {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  color: #5a6e82;
+  transition: color .15s, transform .15s;
+}
+
+.lp-item:hover .lp-arrow {
+  color: #1a4f8a;
+  transform: translateX(2px);
+}
+
+/* Kosong */
+.lp-empty {
+  padding: 28px;
+  text-align: center;
+  font-size: 13px;
+  color: #5a6e82;
+}
+
+/* ── Footer ── */
+.lp-footer {
+  padding: 11px 18px;
+  border-top: 0.5px solid #dce5f0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#lp-count {
+  font-size: 12px;
+  color: #5a6e82;
+}
+
+.lp-badge {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 20px;
+  background: #e8f0fd;
+  color: #0c447c;
+}
+
+/* ── Responsive mobile ── */
+@media (max-width: 520px) {
+  .lp-modal      { border-radius: 16px; }
+  .lp-list       { max-height: 260px; }
+  .lp-name       { font-size: 13px; }
+  .lp-desc       { font-size: 11px; }
+}

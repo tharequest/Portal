@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="css/content.css"/>
   <link rel="stylesheet" href="css/footer.css"/>
   <link rel="stylesheet" href="css/chatbot.css"/>
+  <link rel="stylesheet" href="css/layanan-popup.css"/>
 </head>
 <body>
 
@@ -95,7 +96,7 @@
     <div class="line"></div>
   </div>
   <div class="quick-grid">
-    <a href="#" class="quick-card">
+    <a id="btn-jenis-layanan" href="#" class="quick-card" onclick="return false;">
       <div class="quick-icon" style="background:#e8f0fd;">📋</div>
       <h4>Jenis Layanan</h4>
       <p>Lihat semua jenis layanan akademik dan administrasi</p>
@@ -227,6 +228,46 @@
   </div>
 </div>
 
+
+<div class="lp-overlay" id="lp-overlay">
+  <div class="lp-modal">
+
+    <!-- Header -->
+    <div class="lp-header">
+      <div class="lp-header-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="9" y="2" width="6" height="4" rx="1"/>
+          <path d="M8 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2h-2"/>
+          <line x1="8" y1="10" x2="16" y2="10"/>
+          <line x1="8" y1="14" x2="16" y2="14"/>
+          <line x1="8" y1="18" x2="12" y2="18"/>
+        </svg>
+      </div>
+      <div>
+        <div class="lp-header-title">Jenis Layanan Akademik</div>
+        <div class="lp-header-sub">Pilih formulir sesuai kebutuhan</div>
+      </div>
+      <button class="lp-close" onclick="closeLayananPopup()">✕</button>
+    </div>
+
+    <!-- Search -->
+    <div class="lp-search-wrap">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" id="lp-search" placeholder="Cari layanan..." oninput="lpFilter(this.value)"/>
+    </div>
+
+    <!-- Daftar form -->
+    <div class="lp-list" id="lp-list"></div>
+
+    <!-- Footer -->
+    <div class="lp-footer">
+      <span id="lp-count">8 layanan tersedia</span>
+      <span class="lp-badge">Google Form</span>
+    </div>
+
+  </div>
+</div>
+
 <!-- JS — urutan load penting! -->
 <script src="js/store.js"></script>
 <script src="js/header.js"></script>
@@ -235,6 +276,7 @@
 <script src="js/news.js"></script>
 <script src="js/chatbot.js"></script>
 <script src="js/app.js"></script>
+<script src="js/layanan-popup.js"></script>
 
 </body>
 </html>
