@@ -185,7 +185,7 @@
        target="_blank" rel="noopener noreferrer">
        Draft Bebas Laboratorium
     </a>
-    
+
   </div>
   <!-- Menu lain di mobile-->
   <a onclick="openKontakPopup()" style="cursor:pointer">Kontak</a>
@@ -247,22 +247,6 @@
     </a>
   </div>
 </section>
-
-<!-- ═══ Popup Kontak di Header ═══════════════════════════════════ -->
-<div id="kontak-overlay" class="kontak-overlay">
-  <div class="kontak-modal">
-    <button class="kontak-close" id="kontak-close-btn">&#x2715;</button>
-    <div class="kontak-header">
-      <div class="kontak-header-icon">📞</div>
-      <div class="kontak-header-text">
-        <div class="kontak-title">Hubungi Kami</div>
-        <div class="kontak-subtitle">Klik nama untuk chat WhatsApp</div>
-      </div>
-    </div>
-    <div class="kontak-list" id="kontak-list"></div>
-    <div class="kontak-footer">Aktif pada jam kerja · Senin – Jumat</div>
-  </div>
-</div>
 
 <!-- ═══ INFO STRIP ═══════════════════════════════════ -->
 <section class="info-strip">
@@ -408,7 +392,24 @@
   </div>
 </div>
 
+<!-- ═══ Popup Kontak di Header ═══════════════════════════════════ -->
+<div id="kontak-overlay" class="kontak-overlay">
+  <div class="kontak-modal">
+    <button class="kontak-close" id="kontak-close-btn">&#x2715;</button>
+    <div class="kontak-header">
+      <div class="kontak-header-icon">📞</div>
+      <div class="kontak-header-text">
+        <div class="kontak-title">Hubungi Kami</div>
+        <div class="kontak-subtitle">Klik nama untuk chat WhatsApp</div>
+      </div>
+    </div>
+    <div class="kontak-list" id="kontak-list"></div>
+    <div class="kontak-footer">Aktif pada jam kerja · Senin – Jumat</div>
+  </div>
+</div>
+
 <!-- JS — urutan load penting! -->
+ <script src="kontak.js"></script>
 <script src="js/store.js"></script>
 <script src="js/header.js"></script>
 <script src="js/slider.js"></script>
@@ -417,7 +418,6 @@
 <script src="js/chatbot.js"></script>
 <script src="js/app.js"></script>
 <script src="js/layanan-popup.js"></script>
-<script src="kontak.js"></script>
 
 </body>
 </html>
