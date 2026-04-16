@@ -45,12 +45,35 @@
 
     <!-- Nav desktop -->
     <nav class="main-nav">
-      <a href="index.html" class="active">Beranda</a>
-      <a href="#">Jenis Layanan</a>
-      <a href="https://xandria.pduntan.id/login" target="_blank" rel="noopener noreferrer">Bioijazah</a>
-      <a href="https://satu.untan.ac.id/gate/login" target="_blank" rel="noopener noreferrer">Satu UNTAN</a>
-      <a href="ceksurat.html">Cek Surat</a>
-    </nav>
+  <a href="index.html" class="active">Beranda</a>
+
+  <!-- INFO PENTING -->
+  <div class="nav-item dropdown">
+    <span>Info Penting ▾</span>
+    <div class="dropdown-menu">
+      <a href="#" onclick="openPopup('ID_PEDOMAN')">Pedoman Akademik</a>
+      <a href="#" onclick="openPopup('ID_KALENDER')">Kalender Akademik</a>
+      <a href="#" onclick="openPopup('ID_KODE_ETIK')">Kode Etik Untan</a>
+      <a href="#" onclick="openPopup('ID_PISN')">Edaran PISN</a>
+      <a href="#" onclick="openPopup('ID_PDDIKTI')">Perbaikan Data PDDIKTI</a>
+      <a href="#" onclick="openPopup('ID_CUTI')">Prosedur Pengajuan Cuti</a>
+    </div>
+  </div>
+
+  <!-- DOWNLOAD -->
+  <div class="nav-item dropdown">
+    <span>Download ▾</span>
+    <div class="dropdown-menu">
+      <a href="#" onclick="openPopup('ID_AKREDITASI')">Akreditasi UNTAN</a>
+      <a href="#" onclick="openPopup('ID_SIDANG')">Draf Syarat Sidang</a>
+      <a href="#" onclick="openPopup('ID_LAB')">Draf Bebas Laboratorium</a>
+    </div>
+  </div>
+
+  <a href="https://xandria.pduntan.id/login" target="_blank">Bioijazah</a>
+  <a href="https://satu.untan.ac.id/gate/login" target="_blank">Satu UNTAN</a>
+  <a href="ceksurat.html">Cek Surat</a>
+</nav>
 
     <!-- Hamburger (mobile) -->
     <button class="hamburger" id="hamburger" aria-label="Toggle Menu">
@@ -59,8 +82,27 @@
   </div>
 
   <!-- Mobile nav drawer -->
-  <div class="mobile-nav" id="mobileNav">
-    <a href="index.html">🏠 Beranda</a>
+ <div class="mobile-nav" id="mobileNav">
+
+  <a href="index.html">🏠 Beranda</a>
+
+  <div class="mobile-dropdown">
+    <div class="mobile-title">📂 Info Penting</div>
+    <a onclick="openPopup('1wSd8RQRRWbhFVfmU-k5Vh-cA1NfEWD5V')">Pedoman Akademik</a>
+    <a onclick="openPopup('1LDcN5-HvIYEzuh-AxsGp6rors2H2h50Y')">Kalender Akademik</a>
+    <a onclick="openPopup('1HkDnhssHnAZANxmf6ZhZVSz_qTj-Eou2')">Kode Etik Untan</a>
+    <a onclick="openPopup('1iE5rlnfnTdvad4svmKDW1QyZXXh7JRkD')">Edaran PISN</a>
+    <a onclick="openPopup('10G0cmbmU1_Fjn3m1SRmLUIzJ3VEdRjK4')">Perbaikan Data PDDIKTI</a>
+    <a onclick="openPopup('1fV2sJh5zzpKd65WZ5_2XY2woL0shd-GH')">Pengajuan Cuti</a>
+  </div>
+
+  <div class="mobile-dropdown">
+    <div class="mobile-title">📥 Download</div>
+    <a onclick="openPopup('ID_AKREDITASI')">Akreditasi</a>
+    <a onclick="openPopup('ID_SIDANG')">Draf Sidang</a>
+    <a onclick="openPopup('ID_LAB')">Draf Lab</a>
+  </div>
+
     <a href="https://xandria.pduntan.id/login" target="_blank" rel="noopener noreferrer">Bioijazah</a>
     <a href="https://satu.untan.ac.id/gate/login" target="_blank" rel="noopener noreferrer">Satu UNTAN</a>
     <a href="ceksurat.html">✉️ Cek Surat</a>

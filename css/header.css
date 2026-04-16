@@ -169,6 +169,56 @@ nav.main-nav a.active { color: var(--primary); background: rgba(26,79,138,0.07);
 
 .mobile-nav a:hover { color: var(--primary); background: rgba(26,79,138,0.06); }
 
+/* DROPDOWN DESKTOP */
+.nav-item {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 120%;
+  left: 0;
+  background: #fff;
+  min-width: 230px;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  display: none;
+  z-index: 999;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 10px 14px;
+  font-size: 13px;
+  color: #333;
+}
+
+.dropdown-menu a:hover {
+  background: #f3f6fb;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+/* MOBILE DROPDOWN */
+.mobile-dropdown {
+  margin-top: 10px;
+}
+
+.mobile-title {
+  font-weight: 700;
+  font-size: 13px;
+  margin: 10px 0 5px;
+  color: var(--primary);
+}
+
 /* ════════════════════════════════════
    TABLET ≤ 1024px — sembunyikan nav
    ════════════════════════════════════ */

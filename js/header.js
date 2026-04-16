@@ -30,3 +30,12 @@ function initHamburger() {
 
 // Jalankan saat DOM siap
 document.addEventListener('DOMContentLoaded', initHamburger);
+
+// Tutup dropdown saat klik luar
+document.addEventListener('click', (e) => {
+  document.querySelectorAll('.dropdown-menu').forEach(menu => {
+    if (!menu.parentElement.contains(e.target)) {
+      menu.style.display = 'none';
+    }
+  });
+});
