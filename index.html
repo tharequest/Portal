@@ -43,8 +43,8 @@
 
     <div class="header-spacer"></div>
 
-    <!-- Nav desktop -->
-    <nav class="main-nav">
+<!-- Nav desktop ---------------------------------------------------------------------------------------------->
+  <nav class="main-nav">
   <a href="index.html" class="active">Beranda</a>
 
   <!-- INFO PENTING -->
@@ -98,11 +98,12 @@
           title:'Akreditasi UNTAN'
           })">Akreditasi UNTAN</a>
       <a href="https://docs.google.com/document/d/1QQFK0vpB2VYwZN9XRjxiJWRfck6HUCTu/edit" 
-      target="_blank"rel="noopener noreferrer">Draft Bebas Laboratorium</a>
+      target="_blank"rel="noopener noreferrer">Draft Syarat Sidang</a>
       <a href="https://docs.google.com/document/d/10O5ifI5A3WheOjYs9ZWEKtOAe9NsoB7r/edit" 
       target="_blank"rel="noopener noreferrer">Draft Bebas Laboratorium</a>
     </div>
   </div>
+<!--Ceksurat-->
   <a href="https://xandria.pduntan.id/login" target="_blank">Bioijazah</a>
   <a href="https://satu.untan.ac.id/gate/login" target="_blank">Satu UNTAN</a>
   <a href="ceksurat.html">Cek Surat</a>
@@ -114,32 +115,81 @@
     </button>
   </div>
 
-  <!-- Mobile nav drawer -->
+  <!-- Mobile nav drawer -------------------------------------------------------------------------------------->
  <div class="mobile-nav" id="mobileNav">
 
   <a href="index.html">🏠 Beranda</a>
 
+  <!-- INFO PENTING -->
   <div class="mobile-dropdown">
     <div class="mobile-title">📂 Info Penting</div>
-    <a onclick="openPopup('1wSd8RQRRWbhFVfmU-k5Vh-cA1NfEWD5V')">Pedoman Akademik</a>
-    <a onclick="openPopup('1LDcN5-HvIYEzuh-AxsGp6rors2H2h50Y')">Kalender Akademik</a>
-    <a onclick="openPopup('1HkDnhssHnAZANxmf6ZhZVSz_qTj-Eou2')">Kode Etik Untan</a>
-    <a onclick="openPopup('1iE5rlnfnTdvad4svmKDW1QyZXXh7JRkD')">Edaran PISN</a>
-    <a onclick="openPopup('10G0cmbmU1_Fjn3m1SRmLUIzJ3VEdRjK4')">Perbaikan Data PDDIKTI</a>
-    <a onclick="openPopup('1fV2sJh5zzpKd65WZ5_2XY2woL0shd-GH')">Pengajuan Cuti</a>
+
+    <a onclick="openPopup({
+      popupType:'iframe',
+      popupUrl:'https://drive.google.com/file/d/1wSd8RQRRWbhFVfmU-k5Vh-cA1NfEWD5V/preview',
+      title:'Pedoman Akademik'
+    })">Pedoman Akademik</a>
+
+    <a onclick="openPopup({
+      popupType:'iframe',
+      popupUrl:'https://drive.google.com/file/d/1iCfmCHktV68lQ2HEw2C1qkhbFnbB5E71/preview',
+      title:'Kalender Akademik'
+    })">Kalender Akademik</a>
+
+    <a onclick="openPopup({
+      popupType:'iframe',
+      popupUrl:'https://drive.google.com/file/d/1c093F5EznNhtH_48ZbrsTDRILkvxVBnM/preview',
+      title:'Kode Etik Untan'
+    })">Kode Etik Untan</a>
+
+    <a onclick="openPopup({
+      popupType:'iframe',
+      popupUrl:'https://drive.google.com/file/d/1iE5rlnfnTdvad4svmKDW1QyZXXh7JRkD/preview',
+      title:'Edaran PISN'
+    })">Edaran PISN</a>
+
+    <a onclick="openPopup({
+      popupType:'iframe',
+      popupUrl:'https://drive.google.com/file/d/10G0cmbmU1_Fjn3m1SRmLUIzJ3VEdRjK4/preview',
+      title:'Perbaikan Data PDDIKTI'
+    })">Perbaikan Data PDDIKTI</a>
+
+    <a onclick="openPopup({
+      popupType:'iframe',
+      popupUrl:'https://drive.google.com/file/d/1fV2sJh5zzpKd65WZ5_2XY2woL0shd-GH/preview',
+      title:'Pengajuan Cuti'
+    })">Pengajuan Cuti</a>
+
   </div>
 
+  <!-- DOWNLOAD -->
   <div class="mobile-dropdown">
     <div class="mobile-title">📥 Download</div>
-    <a onclick="openPopup('ID_AKREDITASI')">Akreditasi</a>
-    <a onclick="openPopup('ID_SIDANG')">Draf Sidang</a>
-    <a onclick="openPopup('ID_LAB')">Draf Lab</a>
+
+    <a onclick="openPopup({
+      popupType:'iframe',
+      popupUrl:'https://drive.google.com/file/d/1mNeuaIv-AsfNzMgqRului4uO5otE6Vbg/preview',
+      title:'Akreditasi UNTAN'
+    })">Akreditasi UNTAN</a>
+
+    <a href="https://docs.google.com/document/d/1QQFK0vpB2VYwZN9XRjxiJWRfck6HUCTu/edit"
+       target="_blank" rel="noopener noreferrer">
+       Draft Syarat Sidang
+    </a>
+
+    <a href="https://docs.google.com/document/d/10O5ifI5A3WheOjYs9ZWEKtOAe9NsoB7r/edit"
+       target="_blank" rel="noopener noreferrer">
+       Draft Bebas Laboratorium
+    </a>
+
   </div>
 
-    <a href="https://xandria.pduntan.id/login" target="_blank" rel="noopener noreferrer">Bioijazah</a>
-    <a href="https://satu.untan.ac.id/gate/login" target="_blank" rel="noopener noreferrer">Satu UNTAN</a>
-    <a href="ceksurat.html">✉️ Cek Surat</a>
-  </div>
+  <!-- LINK LAIN -->
+  <a href="https://xandria.pduntan.id/login" target="_blank">Bioijazah</a>
+  <a href="https://satu.untan.ac.id/gate/login" target="_blank">Satu UNTAN</a>
+  <a href="ceksurat.html">✉️ Cek Surat</a>
+
+</div>
 </header>
 <!-- ══════════════════════════════════════════════════════════════════ -->
 

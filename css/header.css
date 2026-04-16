@@ -227,7 +227,14 @@ nav.main-nav a.active { color: var(--primary); background: rgba(26,79,138,0.07);
   margin: 10px 0 5px;
   color: var(--primary);
 }
+.mobile-dropdown a {
+  display: none;
+  padding-left: 20px;
+}
 
+.mobile-dropdown.active a {
+  display: block;
+}
 /* ════════════════════════════════════
    TABLET ≤ 1024px — sembunyikan nav
    ════════════════════════════════════ */

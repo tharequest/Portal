@@ -58,3 +58,11 @@ document.querySelectorAll('.dropdown > span').forEach(btn => {
       menu.style.display === 'block' ? 'none' : 'block';
   });
 });
+
+//nav-mobile
+document.querySelectorAll('.mobile-title').forEach(title => {
+  title.addEventListener('click', () => {
+    const parent = title.parentElement;
+    parent.classList.toggle('active');
+  });
+});
