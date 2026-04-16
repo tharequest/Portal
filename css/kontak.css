@@ -1,190 +1,181 @@
 /*
  * kontak.css
  * ─────────────────────────────────────────────
- * Berisi: Overlay popup kontak (transparan/blur)
- *         Kartu kontak 5 orang dengan link WhatsApp
- *         Animasi buka/tutup
- *         Responsive mobile
+ * CSS popup Kontak — gaya seragam dengan
+ * layanan-popup.css (putih bersih, overlay tipis)
+ * Semua class pakai prefix "kt-" agar tidak
+ * bentrok dengan CSS portal lainnya
  * ─────────────────────────────────────────────
  */
 
-/* ── Overlay latar ── */
-.kontak-overlay {
+/* ── Overlay backdrop ── */
+.kt-overlay {
   display: none;
   position: fixed;
   inset: 0;
-  z-index: 9999;
-  background: rgba(5, 12, 24, 0.55);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  justify-content: center;
+  z-index: 9998;
+  background: rgba(14, 50, 96, 0.20);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   align-items: center;
+  justify-content: center;
   padding: 16px;
 }
 
-.kontak-overlay.open {
+.kt-overlay.kt-open {
   display: flex;
-  animation: kontak-fadeIn .2s ease;
+  animation: ktFadeIn .2s ease;
 }
 
-@keyframes kontak-fadeIn {
+@keyframes ktFadeIn {
   from { opacity: 0; }
   to   { opacity: 1; }
 }
 
 /* ── Modal box ── */
-.kontak-modal {
-  position: relative;
-  background: rgba(255, 255, 255, 0.18);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1.5px solid rgba(255, 255, 255, 0.30);
+.kt-modal {
+  background: #ffffff;
   border-radius: 20px;
-  padding: 28px 24px 24px;
-  width: min(420px, 92vw);
+  border: 1px solid rgba(26, 79, 138, 0.12);
+  width: 100%;
+  max-width: 440px;
+  overflow: hidden;
   box-shadow:
-    0 8px 32px rgba(5, 12, 24, 0.30),
-    inset 0 1px 0 rgba(255, 255, 255, 0.35);
-  animation: kontak-popIn .25s ease;
+    0 24px 60px rgba(14, 50, 96, 0.14),
+    0 4px 16px rgba(14, 50, 96, 0.08);
+  animation: ktSlideUp .28s cubic-bezier(.34, 1.56, .64, 1);
 }
 
-@keyframes kontak-popIn {
-  from { opacity: 0; transform: scale(.92) translateY(12px); }
-  to   { opacity: 1; transform: scale(1)   translateY(0);    }
+@keyframes ktSlideUp {
+  from { opacity: 0; transform: translateY(16px) scale(.97); }
+  to   { opacity: 1; transform: none; }
 }
 
-/* ── Header modal ── */
-.kontak-header {
+/* ── Header ── */
+.kt-header {
+  padding: 18px 18px 14px;
+  border-bottom: 0.5px solid #dce5f0;
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 18px;
+  gap: 12px;
 }
 
-.kontak-header-icon {
-  width: 38px;
-  height: 38px;
+.kt-header-icon {
+  width: 40px;
+  height: 40px;
   border-radius: 10px;
-  background: rgba(255, 255, 255, 0.25);
-  border: 1px solid rgba(255, 255, 255, 0.40);
+  background: #e8f0fd;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 18px;
   flex-shrink: 0;
 }
 
-.kontak-header-text .kontak-title {
-  font-size: 15px;
-  font-weight: 800;
-  color: #fff;
-  letter-spacing: -0.01em;
-  line-height: 1.2;
+.kt-header-icon svg {
+  width: 20px;
+  height: 20px;
+  stroke: #1a4f8a;
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
-.kontak-header-text .kontak-subtitle {
-  font-size: 11.5px;
-  color: rgba(255, 255, 255, 0.70);
-  margin-top: 1px;
+.kt-header-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0e3260;
+}
+
+.kt-header-sub {
+  font-size: 12px;
+  color: #5a6e82;
+  margin-top: 2px;
 }
 
 /* ── Tombol tutup ── */
-.kontak-close {
-  position: absolute;
-  top: 14px;
-  right: 14px;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.18);
-  border: 1px solid rgba(255, 255, 255, 0.30);
-  color: rgba(255, 255, 255, 0.85);
-  font-size: 17px;
+.kt-close {
+  margin-left: auto;
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  border: 0.5px solid #dce5f0;
+  background: transparent;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  line-height: 1;
-  transition: background .2s, transform .2s;
+  font-size: 16px;
+  color: #5a6e82;
+  flex-shrink: 0;
+  transition: background .15s, color .15s;
 }
 
-.kontak-close:hover {
-  background: rgba(255, 255, 255, 0.30);
-  transform: scale(1.1);
-}
+.kt-close:hover { background: #f4f7fb; color: #0e3260; }
 
 /* ── Daftar kontak ── */
-.kontak-list {
+.kt-list {
+  padding: 8px 10px;
   display: flex;
   flex-direction: column;
-  gap: 9px;
+  gap: 3px;
 }
 
-/* ── Kartu kontak / link WA ── */
-.kontak-item {
+/* ── Item kartu kontak ── */
+.kt-item {
   display: flex;
   align-items: center;
-  gap: 13px;
-  padding: 12px 14px;
-  background: rgba(255, 255, 255, 0.14);
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  border-radius: 13px;
+  gap: 12px;
+  padding: 11px 10px;
+  border-radius: 10px;
+  border: 0.5px solid transparent;
   text-decoration: none;
-  transition: background .2s, border-color .2s, transform .18s;
+  transition: background .15s, border-color .15s;
   cursor: pointer;
 }
 
-.kontak-item:hover {
-  background: rgba(255, 255, 255, 0.26);
-  border-color: rgba(255, 255, 255, 0.45);
-  transform: translateY(-1px);
+.kt-item:hover {
+  background: #f4f7fb;
+  border-color: #dce5f0;
 }
 
-.kontak-item:active {
-  transform: translateY(0);
-}
-
-/* Avatar inisial */
-.kontak-avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.22);
-  border: 1.5px solid rgba(255, 255, 255, 0.35);
+/* ── Avatar inisial ── */
+.kt-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 14px;
-  font-weight: 800;
-  color: #fff;
+  font-size: 11.5px;
+  font-weight: 700;
   flex-shrink: 0;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.02em;
 }
 
-/* Info nama + nomor */
-.kontak-info {
+/* ── Info nama & nomor ── */
+.kt-info {
   flex: 1;
   min-width: 0;
 }
 
-.kontak-name {
+.kt-name {
   font-size: 13.5px;
-  font-weight: 700;
-  color: #fff;
-  line-height: 1.3;
+  font-weight: 600;
+  color: #1c2b3a;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.kontak-phone {
+.kt-phone {
   font-size: 11.5px;
-  color: rgba(255, 255, 255, 0.65);
+  color: #5a6e82;
   margin-top: 1px;
 }
 
-/* Icon WhatsApp */
-.kontak-wa-icon {
+/* ── Icon WhatsApp bulat hijau ── */
+.kt-wa-icon {
   flex-shrink: 0;
   width: 30px;
   height: 30px;
@@ -193,36 +184,52 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 8px rgba(37, 211, 102, 0.35);
-  transition: transform .2s, box-shadow .2s;
+  transition: transform .15s, box-shadow .15s;
 }
 
-.kontak-item:hover .kontak-wa-icon {
-  transform: scale(1.1);
-  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.50);
+.kt-item:hover .kt-wa-icon {
+  transform: scale(1.08);
+  box-shadow: 0 3px 10px rgba(37, 211, 102, 0.38);
 }
 
-.kontak-wa-icon svg {
-  width: 17px;
-  height: 17px;
+.kt-wa-icon svg {
+  width: 16px;
+  height: 16px;
   fill: #fff;
 }
 
-/* ── Footer note ── */
-.kontak-footer {
-  margin-top: 14px;
-  text-align: center;
-  font-size: 11px;
-  color: rgba(255, 255, 255, 0.50);
+/* ── Footer ── */
+.kt-footer {
+  padding: 11px 18px;
+  border-top: 0.5px solid #dce5f0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-/* ── Responsive Mobile ≤ 480px ── */
-@media (max-width: 480px) {
-  .kontak-modal   { padding: 22px 16px 18px; border-radius: 16px; }
-  .kontak-item    { padding: 10px 12px; gap: 10px; }
-  .kontak-avatar  { width: 36px; height: 36px; font-size: 12px; }
-  .kontak-name    { font-size: 13px; }
-  .kontak-phone   { font-size: 11px; }
-  .kontak-wa-icon { width: 28px; height: 28px; }
-  .kontak-wa-icon svg { width: 15px; height: 15px; }
+.kt-footer-note {
+  font-size: 12px;
+  color: #5a6e82;
+}
+
+.kt-badge {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 20px;
+  background: #e6f7f0;
+  color: #0f6e56;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* ── Responsive mobile ── */
+@media (max-width: 520px) {
+  .kt-modal     { border-radius: 16px; }
+  .kt-name      { font-size: 13px; }
+  .kt-phone     { font-size: 11px; }
+  .kt-avatar    { width: 34px; height: 34px; font-size: 11px; }
+  .kt-wa-icon   { width: 28px; height: 28px; }
+  .kt-wa-icon svg { width: 14px; height: 14px; }
 }
