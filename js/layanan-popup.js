@@ -40,17 +40,8 @@ const LAYANAN_DATA = [
     name: "Pernyataan Terbit Artikel Mahasiswa",
     desc: "Surat Pernyataan Pembimbing Terhadap Artikel Mahasiswa yang belum berstatus terbit",
     url:  "https://docs.google.com/forms/d/e/1FAIpQLSdiZVbf77fVqu8yYe1D_grYFDNF-mIl26n6KYKvuMdOS-0YJw/viewform"
-  },
-  {
-    name: "Draf Bebas Laboratorium",
-    desc: "Contoh Draf Surat Bebas Laboratorium di Lingkungan Fakultas MIPA",
-    url:  "https://docs.google.com/document/d/10O5ifI5A3WheOjYs9ZWEKtOAe9NsoB7r/edit?rtpof=true&tab=t.0"
-  },
-  {
-    name: "Draf Syarat Sidang",
-    desc: "Dokumen Syarat Sidang",
-    url:  "https://docs.google.com/document/d/1QQFK0vpB2VYwZN9XRjxiJWRfck6HUCTu/edit"
   }
+  
 ];
 
 /* Warna badge nomor — berulang sesuai jumlah item */
