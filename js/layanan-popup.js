@@ -37,6 +37,11 @@ const LAYANAN_DATA = [
     url:  "https://docs.google.com/forms/d/e/1FAIpQLSeev6qHtma1S3mRIbgzBHgqEtqnlLw5rW3t13z9Mk4H03RVeg/viewform"
   },
   {
+    name: "Pernyataan Terbit Artikel Mahasiswa",
+    desc: "Surat Pernyataan Pembimbing Terhadap Artikel Mahasiswa yang belum berstatus terbit",
+    url:  "https://docs.google.com/forms/d/e/1FAIpQLSdiZVbf77fVqu8yYe1D_grYFDNF-mIl26n6KYKvuMdOS-0YJw/viewform"
+  },
+  {
     name: "Draf Bebas Laboratorium",
     desc: "Contoh Draf Surat Bebas Laboratorium di Lingkungan Fakultas MIPA",
     url:  "https://docs.google.com/document/d/10O5ifI5A3WheOjYs9ZWEKtOAe9NsoB7r/edit?rtpof=true&tab=t.0"
