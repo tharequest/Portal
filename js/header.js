@@ -39,3 +39,22 @@ document.addEventListener('click', (e) => {
     }
   });
 });
+
+// DROPDOWN CLICK (MOBILE + DESKTOP)
+document.querySelectorAll('.dropdown > span').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+
+    const parent = btn.parentElement;
+    const menu = parent.querySelector('.dropdown-menu');
+
+    // tutup semua dulu
+    document.querySelectorAll('.dropdown-menu').forEach(m => {
+      if (m !== menu) m.style.display = 'none';
+    });
+
+    // toggle
+    menu.style.display =
+      menu.style.display === 'block' ? 'none' : 'block';
+  });
+});
