@@ -1,16 +1,9 @@
 /**
  * api/chat.js  —  Vercel Serverless Function
- * ─────────────────────────────────────────────
- * Fungsi ini bertindak sebagai "jembatan" antara
- * browser pengunjung dan Gemini API.
- *
- * API key TIDAK pernah sampai ke browser.
- * Key dibaca dari Vercel Environment Variable:
- *   GEMINI_API_KEY
- * ─────────────────────────────────────────────
+ * Powered by: Google Gemini API
  */
 
-const GEMINI_MODEL   = 'gemini-2.0-flash';
+const GEMINI_MODEL   = 'gemini-1.5-flash';
 const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`;
 
 const SYSTEM_PROMPT = `Kamu adalah "Asmanita AI", asisten virtual resmi Portal Akademik & Kemahasiswaan Fakultas MIPA Universitas Tanjungpura (FMIPA UNTAN).
@@ -52,25 +45,18 @@ Fungsi: Membantu mahasiswa, dosen, tendik, dan masyarakat mendapatkan informasi 
 3. Jika ada pertanyaan kasar, tidak sopan, atau mengandung kata-kata buruk, tolak dengan tegas namun tetap profesional.
 4. Jika kamu tidak tahu jawabannya secara pasti, arahkan pengguna untuk menghubungi staf akademik via WhatsApp.
 5. Selalu gunakan bahasa Indonesia yang ramah, natural, dan mudah dipahami.
-6. Jawaban singkat dan langsung ke inti — tidak perlu panjang kalau tidak dibutuhkan.
+6. Jawaban singkat dan langsung ke inti.
 7. Boleh gunakan emoji secukupnya agar lebih ramah.
-8. Jangan berpura-pura bisa melakukan sesuatu yang tidak bisa kamu lakukan.
-
-Contoh penolakan tidak relevan:
-"Maaf, saya hanya bisa membantu informasi seputar layanan Portal Akademik FMIPA UNTAN. Ada yang bisa saya bantu? 😊"
-
-Contoh penolakan kasar:
-"Mohon gunakan bahasa yang sopan ya. Saya siap membantu informasi layanan akademik FMIPA UNTAN 😊"`;
+8. Jangan berpura-pura bisa melakukan sesuatu yang tidak bisa kamu lakukan.`;
 
 export default async function handler(req, res) {
-  // ── Hanya terima POST ──
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  // ── Ambil API key dari environment variable Vercel ──
   const apiKey = process.env.GEMINI_API_KEY;
   if (!apiKey) {
+    console.error('[chat] ERROR: GEMINI_API_KEY tidak ditemukan di environment');
     return res.status(500).json({ error: 'API key belum dikonfigurasi di server.' });
   }
 
@@ -79,13 +65,14 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'Format request tidak valid.' });
   }
 
-  // ── Konversi format history ke format Gemini ──
   const contents = messages.map(msg => ({
     role : msg.role === 'assistant' ? 'model' : 'user',
     parts: [{ text: msg.content }]
   }));
 
   try {
+    console.log('[chat] Mengirim ke Gemini, model:', GEMINI_MODEL, '| jumlah pesan:', contents.length);
+
     const geminiRes = await fetch(`${GEMINI_API_URL}?key=${apiKey}`, {
       method : 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -99,23 +86,45 @@ export default async function handler(req, res) {
           temperature    : 0.7
         },
         safetySettings: [
-          { category: 'HARM_CATEGORY_HARASSMENT',        threshold: 'BLOCK_MEDIUM_AND_ABOVE' },
-          { category: 'HARM_CATEGORY_HATE_SPEECH',       threshold: 'BLOCK_MEDIUM_AND_ABOVE' },
-          { category: 'HARM_CATEGORY_SEXUALLY_EXPLICIT', threshold: 'BLOCK_MEDIUM_AND_ABOVE' },
-          { category: 'HARM_CATEGORY_DANGEROUS_CONTENT', threshold: 'BLOCK_MEDIUM_AND_ABOVE' }
+          { category: 'HARM_CATEGORY_HARASSMENT',        threshold: 'BLOCK_ONLY_HIGH' },
+          { category: 'HARM_CATEGORY_HATE_SPEECH',       threshold: 'BLOCK_ONLY_HIGH' },
+          { category: 'HARM_CATEGORY_SEXUALLY_EXPLICIT', threshold: 'BLOCK_ONLY_HIGH' },
+          { category: 'HARM_CATEGORY_DANGEROUS_CONTENT', threshold: 'BLOCK_ONLY_HIGH' }
         ]
       })
     });
 
-    const data  = await geminiRes.json();
+    const data = await geminiRes.json();
+
+    // LOG PENUH — kelihatan di Vercel Logs untuk debug
+    console.log('[chat] Status Gemini:', geminiRes.status);
+    console.log('[chat] Response Gemini:', JSON.stringify(data, null, 2));
+
+    // Cek error dari Gemini
+    if (data.error) {
+      console.error('[chat] Gemini error:', data.error);
+      return res.status(200).json({
+        reply: `Maaf, terjadi kendala teknis (${data.error.message}). Silakan hubungi staf akademik via WhatsApp ya 😊`
+      });
+    }
+
+    // Cek apakah kandidat ada
+    if (!data.candidates || data.candidates.length === 0) {
+      console.warn('[chat] Tidak ada candidates. promptFeedback:', JSON.stringify(data.promptFeedback));
+      return res.status(200).json({
+        reply: 'Maaf, saya tidak bisa memproses pertanyaan tersebut. Silakan coba dengan kalimat yang berbeda ya 😊'
+      });
+    }
+
     const reply =
       data?.candidates?.[0]?.content?.parts?.[0]?.text ||
       'Maaf, saya belum bisa menjawab pertanyaan ini. Silakan hubungi staf akademik via WhatsApp ya 😊';
 
+    console.log('[chat] Reply berhasil, panjang:', reply.length, 'karakter');
     return res.status(200).json({ reply });
 
   } catch (err) {
-    console.error('Gemini fetch error:', err);
+    console.error('[chat] Fetch error:', err.message);
     return res.status(500).json({ error: 'Gagal menghubungi AI. Coba lagi nanti.' });
   }
 }
