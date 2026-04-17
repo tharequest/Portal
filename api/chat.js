@@ -93,8 +93,8 @@ export default async function handler(req, res) {
     const data = await geminiRes.json();
 
     // LOG PENUH — kelihatan di Vercel Logs untuk debug
-    console.log('[chat] Status Gemini:', geminiRes.status);
-    console.log('[chat] Response Gemini:', JSON.stringify(data, null, 2));
+    // console.log('[chat] Status Gemini:', geminiRes.status);
+    // console.log('[chat] Response Gemini:', JSON.stringify(data, null, 2));
 
     // Cek error dari Gemini
     if (data.error) {
