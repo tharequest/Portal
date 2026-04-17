@@ -3,8 +3,8 @@
  * Powered by: Google Gemini API
  */
 
-const GEMINI_MODEL   = 'gemini-1.5-flash';
-const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1/models/${GEMINI_MODEL}:generateContent`;
+const GEMINI_MODEL   = 'gemini-2.0-flash';
+const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`;
 
 const SYSTEM_PROMPT = `Kamu adalah "Asmanita AI", asisten virtual resmi Portal Akademik & Kemahasiswaan Fakultas MIPA Universitas Tanjungpura (FMIPA UNTAN).
 
