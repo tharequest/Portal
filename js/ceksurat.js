@@ -123,7 +123,20 @@ async function cariSurat() {
     const data = await res.json();
 
     if (!data || data.length === 0) {
-      hasilEl.innerHTML = `<div class="cs-no-result">❌ Data tidak ditemukan untuk "<strong>${keyword}</strong>".</div>`;
+      // Pesan kontak berbeda sesuai jenis surat
+      const kontakMap = {
+        ket_lulus:     "Mohon hubungi <strong>Onny</strong> di Menu <strong>Kontak</strong> terkait Surat Keterangan Lulus.",
+        aktif_kuliah:  "Mohon hubungi <strong>Agung</strong> di Menu <strong>Kontak</strong> terkait Surat Aktif Kuliah.",
+        cuti_kuliah:   "Mohon hubungi <strong>Bu Ana</strong> di Menu <strong>Kontak</strong> terkait surat ini.",
+        undur_diri:    "Mohon hubungi <strong>Bu Ana</strong> di Menu <strong>Kontak</strong> terkait surat ini.",
+        pindah_kuliah: "Mohon hubungi <strong>Bu Ana</strong> di Menu <strong>Kontak</strong> terkait surat ini.",
+      };
+      const kontakMsg = kontakMap[jenisSurat] || "";
+      hasilEl.innerHTML = `
+        <div class="cs-no-result">
+          ❌ Data tidak ditemukan untuk "<strong>${keyword}</strong>".
+          ${kontakMsg ? `<br><span class="cs-no-result-kontak">${kontakMsg}</span>` : ""}
+        </div>`;
       return;
     }
 

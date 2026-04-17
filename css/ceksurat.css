@@ -280,6 +280,18 @@
   border-radius: 12px;
 }
 
+.cs-no-result-kontak {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: #5a4a00;
+  background: #fffbe6;
+  border: 1px solid #f5e07a;
+  border-radius: 8px;
+  padding: 7px 14px;
+}
+
 /* Error / notifikasi */
 .cs-error-msg {
   text-align: center;
