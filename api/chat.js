@@ -1,10 +1,12 @@
 /**
  * api/chat.js  —  Vercel Serverless Function
- * Powered by: Google Gemini API
+ * Powered by: Google Gemini API (v1 - stable)
+ * System prompt diinjeksi sebagai pesan pertama
+ * agar kompatibel dengan akun organisasi Google.
  */
 
-const GEMINI_MODEL   = 'gemini-2.0-flash';
-const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`;
+const GEMINI_MODEL   = 'gemini-1.5-flash';
+const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1/models/${GEMINI_MODEL}:generateContent`;
 
 const SYSTEM_PROMPT = `Kamu adalah "Asmanita AI", asisten virtual resmi Portal Akademik & Kemahasiswaan Fakultas MIPA Universitas Tanjungpura (FMIPA UNTAN).
 
@@ -42,11 +44,11 @@ Fungsi: Membantu mahasiswa, dosen, tendik, dan masyarakat mendapatkan informasi 
 == ATURAN MENJAWAB ==
 1. HANYA jawab pertanyaan yang berkaitan dengan FMIPA UNTAN, layanan portal, akademik, dan kemahasiswaan.
 2. Jika ada pertanyaan di luar topik FMIPA/UNTAN, tolak dengan sopan dan arahkan kembali ke topik portal.
-3. Jika ada pertanyaan kasar, tidak sopan, atau mengandung kata-kata buruk, tolak dengan tegas namun tetap profesional.
-4. Jika kamu tidak tahu jawabannya secara pasti, arahkan pengguna untuk menghubungi staf akademik via WhatsApp.
-5. Selalu gunakan bahasa Indonesia yang ramah, natural, dan mudah dipahami.
+3. Jika ada pertanyaan kasar atau tidak sopan, tolak dengan tegas namun tetap profesional.
+4. Jika tidak tahu jawabannya, arahkan pengguna untuk menghubungi staf akademik via WhatsApp.
+5. Gunakan bahasa Indonesia yang ramah, natural, dan mudah dipahami.
 6. Jawaban singkat dan langsung ke inti.
-7. Boleh gunakan emoji secukupnya agar lebih ramah.
+7. Boleh gunakan emoji secukupnya.
 8. Jangan berpura-pura bisa melakukan sesuatu yang tidak bisa kamu lakukan.`;
 
 export default async function handler(req, res) {
@@ -56,8 +58,8 @@ export default async function handler(req, res) {
 
   const apiKey = process.env.GEMINI_API_KEY;
   if (!apiKey) {
-    console.error('[chat] ERROR: GEMINI_API_KEY tidak ditemukan di environment');
-    return res.status(500).json({ error: 'API key belum dikonfigurasi di server.' });
+    console.error('[chat] ERROR: GEMINI_API_KEY tidak ditemukan');
+    return res.status(500).json({ error: 'API key belum dikonfigurasi.' });
   }
 
   const { messages } = req.body;
@@ -65,21 +67,27 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'Format request tidak valid.' });
   }
 
-  const contents = messages.map(msg => ({
+  // Injeksi system prompt sebagai turn pertama (user → model)
+  // Ini menggantikan systemInstruction yang hanya ada di v1beta
+  const systemTurns = [
+    { role: 'user',  parts: [{ text: SYSTEM_PROMPT }] },
+    { role: 'model', parts: [{ text: 'Baik, saya mengerti. Saya adalah Asmanita AI, siap membantu informasi Portal Akademik FMIPA UNTAN.' }] }
+  ];
+
+  const userContents = messages.map(msg => ({
     role : msg.role === 'assistant' ? 'model' : 'user',
     parts: [{ text: msg.content }]
   }));
 
+  const contents = [...systemTurns, ...userContents];
+
   try {
-    console.log('[chat] Mengirim ke Gemini, model:', GEMINI_MODEL, '| jumlah pesan:', contents.length);
+    console.log('[chat] Model:', GEMINI_MODEL, '| Pesan:', userContents.length);
 
     const geminiRes = await fetch(`${GEMINI_API_URL}?key=${apiKey}`, {
       method : 'POST',
       headers: { 'Content-Type': 'application/json' },
       body   : JSON.stringify({
-        systemInstruction: {
-          parts: [{ text: SYSTEM_PROMPT }]
-        },
         contents,
         generationConfig: {
           maxOutputTokens: 512,
@@ -95,32 +103,26 @@ export default async function handler(req, res) {
     });
 
     const data = await geminiRes.json();
+    console.log('[chat] Status:', geminiRes.status);
 
-    // LOG PENUH — kelihatan di Vercel Logs untuk debug
-    console.log('[chat] Status Gemini:', geminiRes.status);
-    console.log('[chat] Response Gemini:', JSON.stringify(data, null, 2));
-
-    // Cek error dari Gemini
     if (data.error) {
-      console.error('[chat] Gemini error:', data.error);
+      console.error('[chat] Gemini error:', data.error.code, data.error.message);
       return res.status(200).json({
-        reply: `Maaf, terjadi kendala teknis (${data.error.message}). Silakan hubungi staf akademik via WhatsApp ya 😊`
+        reply: `Maaf, terjadi kendala (${data.error.code}). Silakan hubungi staf akademik via WhatsApp ya 😊`
       });
     }
 
-    // Cek apakah kandidat ada
     if (!data.candidates || data.candidates.length === 0) {
-      console.warn('[chat] Tidak ada candidates. promptFeedback:', JSON.stringify(data.promptFeedback));
+      console.warn('[chat] Candidates kosong:', JSON.stringify(data.promptFeedback));
       return res.status(200).json({
-        reply: 'Maaf, saya tidak bisa memproses pertanyaan tersebut. Silakan coba dengan kalimat yang berbeda ya 😊'
+        reply: 'Maaf, saya tidak bisa memproses pertanyaan tersebut. Coba dengan kalimat lain ya 😊'
       });
     }
 
-    const reply =
-      data?.candidates?.[0]?.content?.parts?.[0]?.text ||
-      'Maaf, saya belum bisa menjawab pertanyaan ini. Silakan hubungi staf akademik via WhatsApp ya 😊';
+    const reply = data?.candidates?.[0]?.content?.parts?.[0]?.text
+      || 'Maaf, saya belum bisa menjawab. Silakan hubungi staf akademik via WhatsApp ya 😊';
 
-    console.log('[chat] Reply berhasil, panjang:', reply.length, 'karakter');
+    console.log('[chat] Berhasil, panjang reply:', reply.length);
     return res.status(200).json({ reply });
 
   } catch (err) {
