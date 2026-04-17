@@ -44,7 +44,7 @@ function initChat() {
   });
 
   addChatMsg('bot',
-    'Halo! Saya <strong>Asmanita AI</strong> 👋<br>' +
+    'Halo! Saya <strong>Asmanisa AI</strong> 👋<br>' +
     'Asisten virtual Portal Akademik & Kemahasiswaan FMIPA UNTAN.<br><br>' +
     'Tanyakan apa saja seputar layanan akademik, ijazah, surat, atau info kampus ya!'
   );
