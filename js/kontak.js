@@ -106,7 +106,6 @@ function renderKontakList() {
   container.innerHTML = KONTAK_DATA.map((person, i) => {
     const color = KONTAK_AVATAR_COLORS[i % KONTAK_AVATAR_COLORS.length];
     const waUrl = ktBuildWaUrl(person.phone);
-    const displayPhone = ktFormatPhone(person.phone);
 
     return `
       <a class="kt-item"
@@ -120,7 +119,6 @@ function renderKontakList() {
         </div>
         <div class="kt-info">
           <div class="kt-name">${person.name}</div>
-          <div class="kt-phone">${displayPhone}</div>
         </div>
         <div class="kt-wa-icon">${KT_WA_SVG}</div>
       </a>`;
